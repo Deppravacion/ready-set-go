@@ -1,0 +1,49 @@
+{
+  "users" : [
+    {
+      "id" : "01",
+      "name" : "Robert Paulson",
+      "email" : "bobby.paulson@readysetgo.com",
+      "password" : "password"
+      
+    },
+    {
+      "id" : "02",
+      "name" : "Chuky Palahniuk",
+      "email" : "bobby.paulson@readysetgo.com",
+      "password" : "password"
+      
+    }
+  ],
+ "stores" : [
+    {
+      "id" : "001",
+      "name" : "garageFridge"        
+    },
+    {
+      "id" : "002",
+      "name" : "lx470"      
+    }
+  ],
+  "items" : [
+    {
+      "id": "001",
+      "name" : "shovel",
+      "image" : "shovel.jpg",
+      "description" : "short shovel",
+      "quantity" : "1", 
+      "minQuantity" : "1",
+      "isEssential" : "true"
+    },
+    {
+      "id": "002",
+      "name" : "recoveryGear",
+      "image" : "recoveryGear.jpg",
+      "description" : "straps, shackles, etc",
+      "quantity" : "1",
+      "minQuantity" : "1",
+      "isEssential" : "true"
+    }
+  ]
+  
+}

@@ -4,46 +4,67 @@
       "id" : "01",
       "name" : "Robert Paulson",
       "email" : "bobby.paulson@readysetgo.com",
-      "password" : "password"
-      
-    },
-    {
-      "id" : "02",
-      "name" : "Chuky Palahniuk",
-      "email" : "bobby.paulson@readysetgo.com",
-      "password" : "password"
-      
+      "password" : "password123"      
     }
   ],
  "stores" : [
     {
-      "id" : "001",
-      "name" : "garageFridge"        
+      "id" : "01",
+      "name" : "garageFridge",
+      "userId" : "01",
+      "itemId" : "01"        
     },
     {
-      "id" : "002",
-      "name" : "lx470"      
+      "id" : "02",
+      "name" : "lx470",
+      "userId" : "01",
+      "itemId" : "01"      
     }
   ],
   "items" : [
     {
-      "id": "001",
+      "id": "01",
       "name" : "shovel",
       "image" : "shovel.jpg",
       "description" : "short shovel",
       "quantity" : "1", 
       "minQuantity" : "1",
-      "isEssential" : "true"
+      "storeId" : "02"
     },
     {
-      "id": "002",
+      "id": "02",
       "name" : "recoveryGear",
       "image" : "recoveryGear.jpg",
       "description" : "straps, shackles, etc",
       "quantity" : "1",
       "minQuantity" : "1",
-      "isEssential" : "true"
+      "storeId" : "02"
+    },
+    {
+      "id": "03",
+      "name" : "babyMilk    ",
+      "image" : "babyMilk.jpg",
+      "description" : "frozen breast milk",
+      "quantity" : "99",
+      "minQuantity" : "18",
+      "storeId" : "01"
     }
-  ]
-  
+  ],
+  "favorites" : [
+    {
+      "userId" : "01",
+      "itemId" : "01",
+      "storeId" : "02"
+    },
+    {
+      "userId" : "01",
+      "itemId" : "02",
+      "storeId" : "02"
+    },
+    {
+      "userId" : "01",
+      "itemId" : "03",
+      "storeId" : "01"
+    }
+  ]  
 }

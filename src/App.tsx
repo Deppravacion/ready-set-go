@@ -1,15 +1,11 @@
 import "./App.css";
+import { SignUp } from "./components/SignUp";
 
 function App() {
   return (
     <>
-      <button className='btn btn-outline'>Default</button>
-      <button className='btn btn-outline btn-primary'>Primary</button>
-      <button className='btn btn-outline btn-secondary'>Secondary</button>
-      <button className='btn btn-outline btn-accent'>Accent</button>
-      <p className='read-the-docs'>
-        Click on the Vite and React logos to learn more
-      </p>
+      <SignUp />
+      <p className='read-the-docs'>ready set go</p>
     </>
   );
 }

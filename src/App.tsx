@@ -1,11 +1,10 @@
 import "./App.css";
-import { SignUp } from "./components/SignUp";
+import { SignUp } from "./pages/SignUp";
 
 function App() {
   return (
     <>
       <SignUp />
-      <p className='read-the-docs'>ready set go</p>
     </>
   );
 }

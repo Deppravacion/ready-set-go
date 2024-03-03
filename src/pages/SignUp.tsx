@@ -1,14 +1,16 @@
-import { DaisyAvatar } from "../components/DaisyAvatar";
-
 export const SignUp = () => {
   return (
     <>
       <div className='card shrink-0 w-full max-w-sm shadow-2xl bg-base-100'>
         <form className='card-body'>
           <div className='form-control'>
-            <DaisyAvatar
-            // image='user ? user.avatar : undefined '
-            />
+            {/* Daisy avatar */}
+            <div className='avatar justify-center'>
+              <div className='w-36 mask mask-squircle'>
+                <img src='https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg' />
+              </div>
+            </div>
+            {/* Daisy avatar */}
             <label className='label'>
               <span className='label-text'>Email</span>
             </label>
@@ -29,11 +31,6 @@ export const SignUp = () => {
               className='input input-bordered'
               required
             />
-            {/* <label className='label'>
-              <a href='#' className='label-text-alt link link-hover'>
-                Forgot password?
-              </a>
-            </label> */}
           </div>
           <div className='form-control'>
             <label className='label'>

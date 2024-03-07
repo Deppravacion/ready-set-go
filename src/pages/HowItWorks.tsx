@@ -14,7 +14,7 @@ const Card: React.FC<CardProps> = ({ cardTitle, cardBody }) => {
   );
 };
 
-export const HowItWorks = () => {
+export const HowItWorks: React.FC = () => {
   const cardBodyData = [
     {
       cardTitle: "Step 1",

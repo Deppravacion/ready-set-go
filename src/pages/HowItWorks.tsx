@@ -1,4 +1,4 @@
-import { BasicLayout } from "../components/BasicLayout";
+// import { BasicLayout } from "../components/BasicLayout";
 
 type CardProps = {
   cardTitle: string;
@@ -40,17 +40,38 @@ export const HowItWorks: React.FC = () => {
   const title = "How It Works>!";
 
   return (
-    <BasicLayout
-      title={title}
-      body={cardBodyData.map((card, index) => {
-        return (
-          <Card
-            key={index}
-            cardTitle={card.cardTitle}
-            cardBody={card.cardBody}
-          />
-        );
-      })}
-    />
+    <>
+      <div className='card w-96 bg-base-100 shadow-xl'>
+        <div className='container mx-auto p-20 bg-cyan-600 rounded-md'>
+          <h2 className='text-lg'>{title}</h2>
+        </div>
+        <div className='card-body'>
+          {cardBodyData.map((card, index) => {
+            return (
+              <Card
+                key={index}
+                cardTitle={card.cardTitle}
+                cardBody={card.cardBody}
+              />
+            );
+          })}
+        </div>
+        {/* daisy button */}
+        <button className='btn btn-outline btn-success'>Next</button>
+      </div>
+
+      {/* <BasicLayout
+        title={title}
+        body={cardBodyData.map((card, index) => {
+          return (
+            <Card
+              key={index}
+              cardTitle={card.cardTitle}
+              cardBody={card.cardBody}
+            />
+          );
+        })}
+      /> */}
+    </>
   );
 };

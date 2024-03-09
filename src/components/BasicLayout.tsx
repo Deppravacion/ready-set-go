@@ -10,6 +10,7 @@ export const BasicLayout: React.FC<BasicLayoutProps> = ({ title, body }) => {
         <h2 className='text-lg'>{title}</h2>
       </div>
       <div className='card-body'>{body}</div>
+      <button className='btn btn-outline btn-success'>Next</button>
     </div>
   );
 };

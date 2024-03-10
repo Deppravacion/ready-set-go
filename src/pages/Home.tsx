@@ -1,20 +1,39 @@
 const title: string = "Ready Set Go!";
 const subTitle: string = " Your Home Page";
 
-type CardProps = {
+type StoreCardProps = {
   cardTitle: string;
-  cardBody: string;
+  cardBody: string[];
 };
 
-const Card: React.FC<CardProps> = ({ cardTitle, cardBody }) => {
+const StoreCard: React.FC<StoreCardProps> = ({ cardTitle, cardBody }) => {
   return (
     <div className='card shadow-sm bg-gray-200'>
       <div className='container mx-auto p-5 bg-cyan-600 rounded-md'>
         <h2 className='text-lg'>{cardTitle}</h2>
       </div>
-      <div className='card-body'>{cardBody}</div>
+      <div className='card-body'>
+        {cardBody &&
+          cardBody.map((item, i) => {
+            return (
+              <div key={i} className='text-center'>
+                {item}
+              </div>
+            );
+          })}
+      </div>
     </div>
   );
+};
+
+const storeCardData = {
+  cardTitle: "store name",
+  cardBody: [
+    "store items list",
+    "store items list",
+    "store items list",
+    "store items list",
+  ],
 };
 
 export const Home = () => {
@@ -25,9 +44,20 @@ export const Home = () => {
           <h2 className='text-lg'>{title}</h2>
           <h2 className='text-md'>{subTitle}</h2>
         </div>
-        <div className='card-body'></div>
-        {/* daisy button */}
-        <button className='btn btn-outline btn-success'>Next</button>
+        <div className='card-body'>
+          {
+            <StoreCard
+              cardTitle='store name'
+              cardBody={storeCardData.cardBody}
+            />
+          }
+        </div>
+        <button className='btn btn-outline rounded-none btn-success'>
+          Next
+        </button>
+        <button className='btn btn-outline rounded-none btn-warning px-2'>
+          logout
+        </button>
       </div>
     </>
   );

@@ -8,11 +8,11 @@ type StoreCardProps = {
 
 const StoreCard: React.FC<StoreCardProps> = ({ cardTitle, cardBody }) => {
   return (
-    <div className='card shadow-sm bg-gray-200'>
-      <div className='container mx-auto p-5 bg-cyan-600 rounded-md'>
+    <div className='card shadow-sm bg-slate-200'>
+      <div className='container mx-auto p-5 bg-slate-400 rounded-md'>
         <h2 className='text-lg'>{cardTitle}</h2>
       </div>
-      <div className='card-body'>
+      <div className='card-body bg-slate-50'>
         {cardBody &&
           cardBody.map((item, i) => {
             return (

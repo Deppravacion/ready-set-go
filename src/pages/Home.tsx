@@ -9,7 +9,7 @@ type StoreCardProps = {
 const StoreCard: React.FC<StoreCardProps> = ({ cardTitle, cardBody }) => {
   return (
     <div className='card shadow-sm bg-slate-200'>
-      <div className='container mx-auto p-5 bg-slate-400 rounded-md'>
+      <div className='container mx-auto p-1 bg-slate-400 rounded-none'>
         <h2 className='text-lg'>{cardTitle}</h2>
       </div>
       <div className='card-body bg-slate-50'>
@@ -22,6 +22,7 @@ const StoreCard: React.FC<StoreCardProps> = ({ cardTitle, cardBody }) => {
             );
           })}
       </div>
+      <button className='btn rounded-none'>expand</button>
     </div>
   );
 };
@@ -40,7 +41,7 @@ export const Home = () => {
   return (
     <>
       <div className='card w-96 bg-base-100 shadow-xl'>
-        <div className='container mx-auto p-20 bg-cyan-600 rounded-md'>
+        <div className='container mx-auto p-10 bg-cyan-600 rounded-md'>
           <h2 className='text-lg'>{title}</h2>
           <h2 className='text-md'>{subTitle}</h2>
         </div>
@@ -52,12 +53,17 @@ export const Home = () => {
             />
           }
         </div>
-        <button className='btn btn-outline rounded-none btn-success'>
-          Next
-        </button>
-        <button className='btn btn-outline rounded-none btn-warning px-2'>
-          logout
-        </button>
+        <div className='flex justify-between'>
+          <button className='btn btn-outline rounded-none btn-warning px-2'>
+            Logout
+          </button>
+          <button className='btn btn-outline rounded-none btn-success'>
+            Home
+          </button>
+          <button className='btn btn-outline rounded-none btn-secondary'>
+            New
+          </button>
+        </div>
       </div>
     </>
   );

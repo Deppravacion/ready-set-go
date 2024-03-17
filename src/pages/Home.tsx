@@ -22,6 +22,7 @@ const StoreCard: React.FC<StoreCardProps> = ({ cardTitle, cardBody }) => {
             );
           })}
       </div>
+      {/* <h2>hello world</h2> */}
       <button className='btn rounded-none'>expand</button>
     </div>
   );

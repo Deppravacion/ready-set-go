@@ -56,7 +56,6 @@ export const HowItWorks: React.FC = () => {
             );
           })}
         </div>
-        {/* daisy button */}
         <button className='btn btn-outline btn-success'>Next</button>
       </div>
 

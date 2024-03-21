@@ -1,4 +1,5 @@
 import "./App.css";
+import { CreateStore } from "./pages/CreateStore";
 import { Home } from "./pages/Home";
 import { HowItWorks } from "./pages/HowItWorks";
 import { SignIn } from "./pages/SignIn";
@@ -11,6 +12,7 @@ function App() {
       <SignIn />
       <HowItWorks />
       <Home />
+      <CreateStore />
     </>
   );
 }

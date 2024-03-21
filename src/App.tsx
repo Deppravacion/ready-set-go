@@ -1,5 +1,5 @@
 import "./App.css";
-import { Details } from "./Details";
+import { Details } from "./pages/Details";
 import { CreateStore } from "./pages/CreateStore";
 import { Home } from "./pages/Home";
 import { HowItWorks } from "./pages/HowItWorks";

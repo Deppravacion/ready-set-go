@@ -8,11 +8,13 @@ import { SignUp } from "./pages/SignUp";
 function App() {
   return (
     <>
-      <SignUp />
-      <SignIn />
-      <HowItWorks />
-      <Home />
-      <CreateStore />
+      <div className='flex flex-wrap justify-center items-center'>
+        <SignUp />
+        <SignIn />
+        <HowItWorks />
+        <Home />
+        <CreateStore />
+      </div>
     </>
   );
 }

@@ -38,11 +38,16 @@ const storeCardData = {
   ],
 };
 
+const handleClick = () => {
+  const modal = document.getElementById("my_modal_2") as HTMLDialogElement;
+  modal?.showModal();
+};
+
 export const Home = () => {
   return (
     <>
       <div className='card w-96 bg-base-100 shadow-xl'>
-        <div className='container mx-auto p-10 bg-cyan-600 rounded-md'>
+        <div className='container mx-auto p-10 bg-accent rounded-md'>
           <h2 className='text-lg'>{title}</h2>
           <h2 className='text-md'>{subTitle}</h2>
         </div>
@@ -61,9 +66,22 @@ export const Home = () => {
           <button className='btn btn-outline rounded-none btn-success'>
             Home
           </button>
-          <button className='btn btn-outline rounded-none btn-secondary'>
+          {/* <button className='btn btn-outline rounded-none btn-secondary'>
+            New
+          </button> */}
+          {/* Open the modal using document.getElementById('ID').showModal() method */}
+          <button className='btn' onClick={() => handleClick}>
             New
           </button>
+          <dialog id='my_modal_2' className='modal'>
+            <div className='modal-box'>
+              <h3 className='font-bold text-lg'>Hello!</h3>
+              <p className='py-4'>Press ESC key or click outside to close</p>
+            </div>
+            <form method='dialog' className='modal-backdrop'>
+              <button>close</button>
+            </form>
+          </dialog>
         </div>
       </div>
     </>

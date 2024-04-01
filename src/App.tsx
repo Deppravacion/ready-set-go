@@ -3,19 +3,19 @@ import { Details } from "./pages/Details";
 import { CreateStore } from "./pages/CreateStore";
 import { Home } from "./pages/Home";
 import { HowItWorks } from "./pages/HowItWorks";
-import { SignIn } from "./pages/SignIn";
 import { SignUp } from "./pages/SignUp";
+import SignIn from "./pages/SignIn";
 
 function App() {
   return (
     <>
       <div className='flex flex-wrap justify-center items-center'>
-        <SignUp />
+        {/* <SignUp /> */}
         <SignIn />
-        <HowItWorks />
-        <Home />
-        <CreateStore />
-        <Details />
+        {/* <HowItWorks /> */}
+        {/* <Home /> */}
+        {/* <CreateStore /> */}
+        {/* <Details /> */}
       </div>
     </>
   );

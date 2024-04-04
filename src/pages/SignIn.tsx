@@ -16,7 +16,8 @@ class UserStore {
 
 const userStore = new UserStore();
 
-const SignIn = () => {
+export const SignIn = () => {
+  // const SignIn = () => {
   return (
     <>
       <div className='hero min-h-screen '>
@@ -76,4 +77,4 @@ const SignIn = () => {
   );
 };
 
-export default observer(SignIn);
+// export default observer(SignIn);

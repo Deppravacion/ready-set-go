@@ -1,4 +1,7 @@
 import "./App.css";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Details } from "./pages/Details";
 import { CreateStore } from "./pages/CreateStore";
 import { Home } from "./pages/Home";
@@ -9,16 +12,20 @@ import { SignIn } from "./pages/SignIn";
 
 function App() {
   return (
-    <>
-      <div className='flex flex-wrap justify-center items-center'>
-        {/* <SignUp /> */}
-        <SignIn />
-        {/* <HowItWorks /> */}
-        {/* <Home /> */}
-        {/* <CreateStore /> */}
-        {/* <Details /> */}
-      </div>
-    </>
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          {/* <Route element={<PrivateRoutes />}>
+            <Route path='/users' element={<JeepDashboard />} />
+            <Route path='/events' element={<JeepDashboard />} />
+            <Route path='/features' element={<JeepDashboard />} />
+          </Route> */}
+          <Route path='/home' element={<Home />} />
+          <Route index path='/' element={<Navigate to={"/home"} />} />
+        </Routes>
+        <ToastContainer />
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 

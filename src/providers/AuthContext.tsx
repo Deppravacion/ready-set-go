@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 import { toast } from "react-toastify";
 import { AuthProviderProps, AuthTypes } from "../types/AuthTypes";
 
@@ -15,12 +15,15 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
 
   const handleLogin = () => {
     console.log("he baugh!");
+    toast.success("he baugh!");
   };
   const handleSignUp = () => {
     console.log("he exists!");
+    toast.success("he exists!");
   };
   const handleLogout = () => {
-    console.log(" he goan!");
+    console.log(" he gahn!");
+    toast.success(" he gahn!");
   };
   return (
     <AuthContext.Provider

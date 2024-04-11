@@ -5,6 +5,7 @@ export const PrivateRoutes = () => {
   // return auth.token ? <Outlet /> : <Navigate to='/home' />;
   //above used with token**************
   //below for ease of testing***********
+
   // let auth = true;
   let auth = false;
   return auth ? <Outlet /> : <Navigate to='/signin' />;

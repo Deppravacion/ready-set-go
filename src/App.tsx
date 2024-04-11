@@ -5,14 +5,23 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import { Home } from "./pages/Home";
 import { AuthProvider } from "./providers/AuthContext";
+import { PrivateRoutes } from "./utils/PrivateRoutes";
+import { CreateStore } from "./pages/CreateStore";
+import { Details } from "./pages/Details";
+import { SignIn } from "./pages/SignIn";
 
 function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
         <Routes>
-          <Route path='/home' element={<Home />} />
-          <Route index path='/' element={<Navigate to={"/home"} />} />
+          <Route element={<PrivateRoutes />}>
+            <Route path='/createstore' element={<CreateStore />} />
+            <Route path='/details' element={<Details />} />
+            <Route path='/home' element={<Home />} />
+          </Route>
+          <Route path='/signin' element={<SignIn />} />
+          <Route index path='/' element={<Navigate to={"/signin"} />} />
         </Routes>
         <ToastContainer />
       </BrowserRouter>

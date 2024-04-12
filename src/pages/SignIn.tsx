@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useAuthProvider } from "../providers/AuthContext";
-import { set } from "mobx";
 
 export const SignIn = () => {
   const { handleLogin } = useAuthProvider();
@@ -49,11 +48,6 @@ export const SignIn = () => {
                   }}
                   required
                 />
-                {/* <label className='label'>
-                  <a href='#' className='label-text-alt link link-hover'>
-                    Forgot password?
-                  </a>
-                </label> */}
               </div>
               <div className='form-control mt-6'>
                 <button
@@ -70,5 +64,3 @@ export const SignIn = () => {
     </>
   );
 };
-
-// export default observer(SignIn);

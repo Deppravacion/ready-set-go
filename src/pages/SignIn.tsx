@@ -1,7 +1,15 @@
+import { useState } from "react";
 import { useAuthProvider } from "../providers/AuthContext";
+import { set } from "mobx";
 
 export const SignIn = () => {
   const { handleLogin } = useAuthProvider();
+  const [emailInput, setEmailInput] = useState<string>("");
+  const [passwordInput, setPasswordInput] = useState<string>("");
+  const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    handleLogin({ email: emailInput });
+  };
   return (
     <>
       <div className='hero min-h-screen '>
@@ -23,7 +31,7 @@ export const SignIn = () => {
                   placeholder='email'
                   className='input input-bordered'
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                    handleLogin({ email: e.target.value })
+                    setEmailInput(e.target.value)
                   }
                   required
                 />
@@ -36,6 +44,9 @@ export const SignIn = () => {
                   type='password'
                   placeholder='password'
                   className='input input-bordered'
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    setPasswordInput(e.target.value);
+                  }}
                   required
                 />
                 {/* <label className='label'>
@@ -47,7 +58,7 @@ export const SignIn = () => {
               <div className='form-control mt-6'>
                 <button
                   className='btn btn-primary'
-                  onClick={() => console.log("clicked")}
+                  onChange={() => handleSubmit}
                 >
                   Login
                 </button>

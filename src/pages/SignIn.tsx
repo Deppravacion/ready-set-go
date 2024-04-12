@@ -1,23 +1,7 @@
-import { makeObservable, action, makeAutoObservable } from "mobx";
-import { observer } from "mobx-react";
-
-class UserStore {
-  id = Math.random();
-  name = "testing";
-  password = "";
-
-  constructor() {
-    makeAutoObservable(this);
-  }
-  // setName(name: string) {
-  //   this.name = name;
-  // }
-}
-
-const userStore = new UserStore();
+import { useAuthProvider } from "../providers/AuthContext";
 
 export const SignIn = () => {
-  // const SignIn = () => {
+  const { handleLogin } = useAuthProvider();
   return (
     <>
       <div className='hero min-h-screen '>
@@ -27,7 +11,6 @@ export const SignIn = () => {
             <p className='py-6'>
               Welcome Back to READY-SET-GO! Please login to your account.
             </p>
-            <h1>{userStore.name}</h1>
           </div>
           <div className='card shrink-0 w-full max-w-sm shadow-2xl bg-base-100'>
             <form className='card-body'>
@@ -40,7 +23,7 @@ export const SignIn = () => {
                   placeholder='email'
                   className='input input-bordered'
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                    (userStore.name = e.target.value)
+                    handleLogin({ email: e.target.value })
                   }
                   required
                 />

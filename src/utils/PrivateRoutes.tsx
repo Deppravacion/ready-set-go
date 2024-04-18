@@ -7,6 +7,6 @@ export const PrivateRoutes = () => {
   //below for ease of testing***********
 
   // let auth = true;
-  let auth = false;
+  let auth = { token: sessionStorage.getItem("name") };
   return auth ? <Outlet /> : <Navigate to='/signin' />;
 };

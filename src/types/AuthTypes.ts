@@ -9,7 +9,13 @@ export type AuthTypes = {
   password: string;
   setPassword: (password: string) => void;
   // handleLogin: () => void;
-  handleLogin: ({ email }: { email: string }) => Promise<void>;
+  handleLogin: ({
+    email,
+    password,
+  }: {
+    email: string;
+    password: string;
+  }) => Promise<void>;
   handleSignUp: () => void;
   // handleSignUp: (email: string, password: string) => Promise<boolean>;
   handleLogout: () => void;

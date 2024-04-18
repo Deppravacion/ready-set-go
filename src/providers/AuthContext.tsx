@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, useEffect } from "react";
 import { toast } from "react-toastify";
 import { AuthProviderProps, AuthTypes } from "../types/AuthTypes";
 import { getUsersFromDB } from "../api/users/get-users";
@@ -14,8 +14,15 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const handleLogin = async ({ email }: { email: string }) => {
-    const user = await getUsersFromDB({ email });
+  const handleLogin = async ({
+    email,
+    password,
+  }: {
+    email: string;
+    password: string;
+  }) => {
+    const user = await getUsersFromDB({ email, password });
+
     console.log(user);
   };
 
@@ -27,6 +34,14 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
     console.log(" he gahn!");
     toast.success(" he gahn!");
   };
+
+  useEffect(() => {
+    const user = sessionStorage.getItem("user");
+    if (user) {
+      setUser(user);
+    }
+  }, []);
+
   return (
     <AuthContext.Provider
       value={{

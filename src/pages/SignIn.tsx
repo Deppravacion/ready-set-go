@@ -5,9 +5,10 @@ export const SignIn = () => {
   const { handleLogin } = useAuthProvider();
   const [emailInput, setEmailInput] = useState<string>("");
   const [passwordInput, setPasswordInput] = useState<string>("");
-  const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    handleLogin({ email: emailInput });
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    console.log("submitted");
+    handleLogin({ email: emailInput, password: passwordInput });
   };
   return (
     <>
@@ -20,7 +21,7 @@ export const SignIn = () => {
             </p>
           </div>
           <div className='card shrink-0 w-full max-w-sm shadow-2xl bg-base-100'>
-            <form className='card-body'>
+            <form className='card-body' onSubmit={handleSubmit}>
               <div className='form-control'>
                 <label className='label'>
                   <span className='label-text'>Email</span>
@@ -50,10 +51,7 @@ export const SignIn = () => {
                 />
               </div>
               <div className='form-control mt-6'>
-                <button
-                  className='btn btn-primary'
-                  onChange={() => handleSubmit}
-                >
+                <button type='submit' className='btn btn-primary'>
                   Login
                 </button>
               </div>

@@ -5,6 +5,12 @@
       "name" : "Robert Paulson",
       "email" : "bobby.paulson@readysetgo.com",
       "password" : "password123"      
+    }, 
+    {
+      "id" : "02", 
+      "name" : "Tester", 
+      "email" : "test@test.com", 
+      "password" : "password123"
     }
   ],
  "stores" : [

@@ -7,12 +7,12 @@ export const getUsersFromDB = ({
   email: string;
   password: string;
 }) =>
-  fetch("http://localhost:3000/users")
+  fetch("http://localhost:3004/users")
     .then((response) => {
       if (!response.ok) {
         throw new Error("Error fetching users");
       }
-      console.log("positive response");
+      console.log("positive response:");
       return response.json();
     })
     .then((users) =>

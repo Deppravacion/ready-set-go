@@ -10,7 +10,7 @@
       "id" : "02", 
       "name" : "Tester", 
       "email" : "test@test.com", 
-      "password" : "password123"
+      "password" : "pass"
     }
   ],
  "stores" : [

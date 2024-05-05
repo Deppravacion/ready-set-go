@@ -1,6 +1,6 @@
 import { createContext, useState, useContext, useEffect } from "react";
 import { toast } from "react-toastify";
-import { AuthProviderProps, AuthTypes } from "../types/AuthTypes";
+import { AuthProviderProps, AuthTypes, appUser } from "../types/AuthTypes";
 import { getUsersFromDB } from "../api/users/get-users";
 
 export const AuthContext = createContext<AuthTypes>({} as AuthTypes);
@@ -21,9 +21,21 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
     email: string;
     password: string;
   }) => {
-    const user = await getUsersFromDB({ email, password });
-
-    console.log(user);
+    // const user = await getUsersFromDB({ email, password });
+    const response = await fetch("http://localhost:3004/users");
+    if (!response.ok) {
+      return false;
+    }
+    const data = await response.json();
+    const user = data.find(
+      (user: appUser) => user.email === email && user.password === password
+    );
+    if (!user) {
+      return false;
+    } else {
+      sessionStorage.setItem("user", JSON.stringify(user.name));
+      return true;
+    }
   };
 
   const handleSignUp = () => {

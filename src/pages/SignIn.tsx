@@ -1,14 +1,31 @@
 import { useState } from "react";
 import { useAuthProvider } from "../providers/AuthContext";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export const SignIn = () => {
   const { handleLogin } = useAuthProvider();
   const [emailInput, setEmailInput] = useState<string>("");
   const [passwordInput, setPasswordInput] = useState<string>("");
+  const navigate = useNavigate();
+
+  const handleAuthRoute = async () => {
+    const success = await handleLogin({
+      email: emailInput,
+      password: passwordInput,
+    });
+    if (success) {
+      navigate("/home");
+    } else {
+      toast.error("SignIn failed!");
+    }
+  };
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log("submitted");
-    handleLogin({ email: emailInput, password: passwordInput });
+    // handleLogin({ email: emailInput, password: passwordInput });
+    handleAuthRoute();
   };
   return (
     <>

@@ -2,6 +2,7 @@ import { createContext, useState, useContext, useEffect } from "react";
 import { toast } from "react-toastify";
 import { AuthProviderProps, AuthTypes, appUser } from "../types/AuthTypes";
 import { getUsersFromDB } from "../api/users/get-users";
+import { set } from "mobx";
 
 export const AuthContext = createContext<AuthTypes>({} as AuthTypes);
 
@@ -21,7 +22,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
     email: string;
     password: string;
   }) => {
-    // const user = await getUsersFromDB({ email, password });
     const response = await fetch("http://localhost:3004/users");
     if (!response.ok) {
       return false;
@@ -39,12 +39,20 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
   };
 
   const handleSignUp = () => {
-    console.log("he exists!");
-    toast.success("he exists!");
+    toast.success("you are signed up!");
   };
+
   const handleLogout = () => {
-    console.log(" he gahn!");
-    toast.success(" he gahn!");
+    console.log("logging out");
+
+    setUser(null);
+    sessionStorage.removeItem("user");
+    if (!user) {
+      toast.success("Logged out!");
+      return true;
+    } else {
+      console.log(user);
+    }
   };
 
   useEffect(() => {

@@ -1,4 +1,4 @@
-
+import { useAuthProvider } from "../providers/AuthContext";
 const title: string = "Ready Set Go!";
 const subTitle: string = " Your Home Page";
 
@@ -45,6 +45,7 @@ const handleClick = () => {
 };
 
 export const Home = () => {
+  const { handleLogout } = useAuthProvider();
   return (
     <>
       <div className='card w-96 bg-base-100 shadow-xl'>
@@ -61,7 +62,12 @@ export const Home = () => {
           }
         </div>
         <div className='flex justify-between'>
-          <button className='btn btn-outline rounded-none btn-warning px-2'>
+          <button
+            className='btn btn-outline rounded-none btn-warning px-2'
+            onClick={() => {
+              handleLogout();
+            }}
+          >
             Logout
           </button>
           <button className='btn btn-outline rounded-none btn-success'>

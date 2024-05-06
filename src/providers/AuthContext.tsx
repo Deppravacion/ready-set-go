@@ -1,8 +1,7 @@
 import { createContext, useState, useContext, useEffect } from "react";
 import { toast } from "react-toastify";
 import { AuthProviderProps, AuthTypes, appUser } from "../types/AuthTypes";
-import { getUsersFromDB } from "../api/users/get-users";
-import { set } from "mobx";
+import { getUsersFromDB } from "../api/users/get-users"; // functionality moved to the auth provider
 
 export const AuthContext = createContext<AuthTypes>({} as AuthTypes);
 

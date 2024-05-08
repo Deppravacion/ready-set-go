@@ -1,3 +1,5 @@
+//after completing the logout functionality, the routing does not work as expected. the page remains on home while the session storge is cleared.
+
 import "./App.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

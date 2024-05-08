@@ -1,7 +1,8 @@
 import { createContext, useState, useContext, useEffect } from "react";
 import { toast } from "react-toastify";
 import { AuthProviderProps, AuthTypes, appUser } from "../types/AuthTypes";
-import { getUsersFromDB } from "../api/users/get-users"; // functionality moved to the auth provider
+
+// import { getUsersFromDB } from "../api/users/get-users"; // functionality moved to the auth provider
 
 export const AuthContext = createContext<AuthTypes>({} as AuthTypes);
 
@@ -29,6 +30,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
     const user = data.find(
       (user: appUser) => user.email === email && user.password === password
     );
+    console.log(user);
+
     if (!user) {
       return false;
     } else {
@@ -43,11 +46,11 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
 
   const handleLogout = () => {
     console.log("logging out");
-
     setUser(null);
     sessionStorage.removeItem("user");
     if (!user) {
       toast.success("Logged out!");
+
       return true;
     } else {
       console.log(user);
@@ -59,7 +62,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
     if (user) {
       setUser(user);
     }
-  }, []);
+    console.log("user:", user);
+  }, [user]);
 
   return (
     <AuthContext.Provider

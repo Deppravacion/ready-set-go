@@ -40,11 +40,6 @@ const storeCardData = {
   ],
 };
 
-const handleClick = () => {
-  const modal = document.getElementById("my_modal_2") as HTMLDialogElement;
-  modal?.showModal();
-};
-
 export const Home = () => {
   const { handleLogout } = useAuthProvider();
   const navigate = useNavigate();
@@ -75,7 +70,7 @@ export const Home = () => {
           </button>
           <button
             className='btn btn-outline rounded-none btn-success'
-            onClick={() => navigate("/signin")}
+            onClick={() => navigate("/home")}
           >
             Home
           </button>
@@ -83,7 +78,7 @@ export const Home = () => {
             New
           </button> */}
           {/* Open the modal using document.getElementById('ID').showModal() method */}
-          <button className='btn' onClick={() => handleClick}>
+          <button className='btn' onClick={() => navigate("/createstore")}>
             New
           </button>
           <dialog id='my_modal_2' className='modal'>

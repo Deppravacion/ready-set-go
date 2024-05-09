@@ -1,7 +1,12 @@
+import { useAuthProvider } from "../providers/AuthContext";
+import { useNavigate } from "react-router-dom";
+
 const title: string = "Ready Set Go!";
 const subTitle: string = " Create a Store!";
 
 export const CreateStore = () => {
+  const { handleLogout } = useAuthProvider();
+  const navigate = useNavigate();
   return (
     <>
       <div className='card w-96 bg-base-100 shadow-xl'>
@@ -43,10 +48,19 @@ export const CreateStore = () => {
           </form>
         </div>
         <div className='flex justify-between'>
-          <button className='btn btn-outline rounded-none btn-warning px-2'>
+          <button
+            className='btn btn-outline rounded-none btn-warning px-2'
+            onClick={() => {
+              handleLogout();
+              navigate("/signin");
+            }}
+          >
             Logout
           </button>
-          <button className='btn btn-outline rounded-none btn-success'>
+          <button
+            className='btn btn-outline rounded-none btn-success'
+            onClick={() => navigate("/home")}
+          >
             Home
           </button>
           <button className='btn btn-outline rounded-none btn-secondary'>

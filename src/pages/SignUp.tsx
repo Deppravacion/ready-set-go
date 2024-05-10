@@ -1,15 +1,19 @@
+import { useAuthProvider } from "../providers/AuthContext";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import profileImage from "../assets/girlprofile.jpg";
 import { toast } from "react-toastify";
+import profileImage from "../assets/girlprofile.jpg";
 
 export const SignUp = () => {
+  const [emailInput, setEmailInput] = useState<string>("");
+  const [passwordInput, setPasswordInput] = useState<string>("");
+  const [confirmPasswordInput, setConfirmPasswordInput] = useState<string>("");
+  const { handleSignUp } = useAuthProvider();
   const navigate = useNavigate();
   const goToSignIn = () => {
     navigate("/signin");
   };
-  const handleSignUp = () => {
-    toast.warning("feature in progress");
-  };
+
   return (
     <div className='hero min-h-screen'>
       <div className='hero-content flex-col lg:flex-row-reverse'>

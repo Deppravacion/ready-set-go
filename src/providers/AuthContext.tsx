@@ -41,7 +41,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
   };
 
   const handleSignUp = () => {
-    toast.success("you are signed up!");
+    toast.warning("feature in progress");
   };
 
   const handleLogout = () => {

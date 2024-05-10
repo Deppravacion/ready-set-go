@@ -40,8 +40,44 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
     }
   };
 
-  const handleSignUp = () => {
+  const handleSignUp = async (
+    email: string,
+    password: string,
+    confirmPassword: string
+  ) => {
     toast.warning("feature in progress");
+    const response = await fetch("http://localhost:3004/users");
+    if (!response.ok) {
+      return false;
+    }
+    const data = await response.json();
+    const isExistingUser = data.find((user: appUser) => user.email === email);
+    if (isExistingUser) {
+      toast.error("User already exists");
+      return false;
+    }
+    if (password !== confirmPassword) {
+      toast.error("Passwords do not match");
+      return;
+    }
+
+    const newUser = {
+      email,
+      password,
+      id: data.length + 1,
+    };
+
+    const updatedUsers = [...data, newUser];
+    await fetch("http://localhost:3004/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newUser),
+    });
+    toast.success("User created successfully");
+
+    return true;
   };
 
   const handleLogout = () => {

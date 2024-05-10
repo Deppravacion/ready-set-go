@@ -14,6 +14,12 @@ export const SignUp = () => {
     navigate("/signin");
   };
 
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    console.log("submitted");
+    handleSignUp(emailInput, passwordInput, confirmPasswordInput);
+  };
+
   return (
     <div className='hero min-h-screen'>
       <div className='hero-content flex-col lg:flex-row-reverse'>
@@ -24,7 +30,7 @@ export const SignUp = () => {
           </p>
         </div>
         <div className='card shrink-0 w-full max-w-sm shadow-2xl bg-base-100'>
-          <form className='card-body'>
+          <form className='card-body' onSubmit={handleSubmit}>
             <div className='form-control'>
               {/* Daisy avatar */}
               <div className='avatar justify-center'>
@@ -40,6 +46,9 @@ export const SignUp = () => {
                 type='email'
                 placeholder='email'
                 className='input input-bordered'
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setEmailInput(e.target.value)
+                }
                 required
               />
             </div>
@@ -51,6 +60,9 @@ export const SignUp = () => {
                 type='password'
                 placeholder='password'
                 className='input input-bordered'
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setPasswordInput(e.target.value)
+                }
                 required
               />
             </div>
@@ -62,19 +74,18 @@ export const SignUp = () => {
                 type='password'
                 placeholder='password'
                 className='input input-bordered'
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setConfirmPasswordInput(e.target.value)
+                }
                 required
               />
             </div>
             <div className='form-control mt-6 flex gap-1'>
-              <button
-                type='submit'
-                className='btn btn-info'
-                onClick={() => handleSignUp()}
-              >
+              <button type='submit' className='btn btn-info'>
                 Sign Up
               </button>
               <button
-                type='submit'
+                type='button'
                 className='btn btn-primary'
                 onClick={() => goToSignIn()}
               >

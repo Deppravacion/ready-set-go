@@ -82,7 +82,7 @@ export const SignIn = () => {
                   Login
                 </button>
                 <button
-                  type='submit'
+                  type='button'
                   className='btn btn-primary'
                   onClick={() => goToSignUp()}
                 >

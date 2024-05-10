@@ -12,6 +12,7 @@ import { CreateStore } from "./pages/CreateStore";
 import { Details } from "./pages/Details";
 import { SignIn } from "./pages/SignIn";
 import { SignUp } from "./pages/SignUp";
+import { HowItWorks } from "./pages/HowItWorks";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           </Route>
           <Route path='/signin' element={<SignIn />} />
           <Route path='/signup' element={<SignUp />} />
+          <Route path='/howitworks' element={<HowItWorks />} />
           <Route index path='/' element={<Navigate to={"/signin"} />} />
         </Routes>
         <ToastContainer />

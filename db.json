@@ -1,76 +1,89 @@
 {
-  "users" : [
-    {
-      "id" : "01",
-      "name" : "Robert Paulson",
-      "email" : "bobby.paulson@readysetgo.com",
-      "password" : "password123"      
-    }, 
-    {
-      "id" : "02", 
-      "name" : "Tester", 
-      "email" : "test@test.com", 
-      "password" : "pass"
-    }
-  ],
- "stores" : [
-    {
-      "id" : "01",
-      "name" : "garageFridge",
-      "userId" : "01",
-      "itemId" : "01"        
-    },
-    {
-      "id" : "02",
-      "name" : "lx470",
-      "userId" : "01",
-      "itemId" : "01"      
-    }
-  ],
-  "items" : [
+  "users": [
     {
       "id": "01",
-      "name" : "shovel",
-      "image" : "shovel.jpg",
-      "description" : "short shovel",
-      "quantity" : "1", 
-      "minQuantity" : "1",
-      "storeId" : "02"
+      "name": "Robert Paulson",
+      "email": "bobby.paulson@readysetgo.com",
+      "password": "password123"
     },
     {
       "id": "02",
-      "name" : "recoveryGear",
-      "image" : "recoveryGear.jpg",
-      "description" : "straps, shackles, etc",
-      "quantity" : "1",
-      "minQuantity" : "1",
-      "storeId" : "02"
+      "name": "Tester",
+      "email": "test@test.com",
+      "password": "pass"
+    },
+    {
+      "id": 3,
+      "email": "test2@test.com",
+      "password": "pass"
+    },
+    {
+      "id": 4,
+      "email": "test3@test.com",
+      "password": "pass"
+    }
+  ],
+  "stores": [
+    {
+      "id": "01",
+      "name": "garageFridge",
+      "userId": "01",
+      "itemId": "01"
+    },
+    {
+      "id": "02",
+      "name": "lx470",
+      "userId": "01",
+      "itemId": "01"
+    }
+  ],
+  "items": [
+    {
+      "id": "01",
+      "name": "shovel",
+      "image": "shovel.jpg",
+      "description": "short shovel",
+      "quantity": "1",
+      "minQuantity": "1",
+      "storeId": "02"
+    },
+    {
+      "id": "02",
+      "name": "recoveryGear",
+      "image": "recoveryGear.jpg",
+      "description": "straps, shackles, etc",
+      "quantity": "1",
+      "minQuantity": "1",
+      "storeId": "02"
     },
     {
       "id": "03",
-      "name" : "babyMilk    ",
-      "image" : "babyMilk.jpg",
-      "description" : "frozen breast milk",
-      "quantity" : "99",
-      "minQuantity" : "18",
-      "storeId" : "01"
+      "name": "babyMilk    ",
+      "image": "babyMilk.jpg",
+      "description": "frozen breast milk",
+      "quantity": "99",
+      "minQuantity": "18",
+      "storeId": "01"
     }
   ],
-  "favorites" : [
+  "favorites": [
     {
-      "userId" : "01",
-      "itemId" : "01",
-      "storeId" : "02"
+      "userId": "01",
+      "itemId": "01",
+      "storeId": "02",
+      "id": "28ab"
     },
     {
-      "userId" : "01",
-      "itemId" : "02",
-      "storeId" : "02"
+      "userId": "01",
+      "itemId": "02",
+      "storeId": "02",
+      "id": "a0b5"
     },
     {
-      "userId" : "01",
-      "itemId" : "03",
-      "storeId" : "01"
+      "userId": "01",
+      "itemId": "03",
+      "storeId": "01",
+      "id": "6d93"
     }
-  ]  
+  ]
 }

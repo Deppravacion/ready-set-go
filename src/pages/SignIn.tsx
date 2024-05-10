@@ -88,7 +88,6 @@ export const SignIn = () => {
                 >
                   Sign Up
                 </button>
-                {/* <p onClick={() => goToSignUp()}>Sign Up</p> */}
               </div>
             </form>
           </div>

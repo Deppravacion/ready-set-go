@@ -1,6 +1,15 @@
+import { useNavigate } from "react-router-dom";
 import profileImage from "../assets/girlprofile.jpg";
+import { toast } from "react-toastify";
 
 export const SignUp = () => {
+  const navigate = useNavigate();
+  const goToSignIn = () => {
+    navigate("/signin");
+  };
+  const handleSignUp = () => {
+    toast.warning("feature in progress");
+  };
   return (
     <div className='hero min-h-screen'>
       <div className='card shrink-0 w-full max-w-sm shadow-2xl bg-base-100'>
@@ -45,8 +54,21 @@ export const SignUp = () => {
               required
             />
           </div>
-          <div className='form-control mt-6'>
-            <button className='btn btn-primary'>Sign Up</button>
+          <div className='form-control mt-6 flex gap-1'>
+            <button
+              type='submit'
+              className='btn btn-info'
+              onClick={() => handleSignUp()}
+            >
+              Sign Up
+            </button>
+            <button
+              type='submit'
+              className='btn btn-primary'
+              onClick={() => goToSignIn()}
+            >
+              Sign In
+            </button>
           </div>
         </form>
       </div>

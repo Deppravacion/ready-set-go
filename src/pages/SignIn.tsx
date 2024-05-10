@@ -21,6 +21,10 @@ export const SignIn = () => {
     }
   };
 
+  const goToSignUp = () => {
+    navigate("/signup");
+  };
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log("submitted");
@@ -67,10 +71,18 @@ export const SignIn = () => {
                   required
                 />
               </div>
-              <div className='form-control mt-6'>
-                <button type='submit' className='btn btn-primary'>
+              <div className='form-control mt-6 flex gap-1'>
+                <button type='submit' className='btn btn-info'>
                   Login
                 </button>
+                <button
+                  type='submit'
+                  className='btn btn-primary'
+                  onClick={() => goToSignUp()}
+                >
+                  Sign Up
+                </button>
+                {/* <p onClick={() => goToSignUp()}>Sign Up</p> */}
               </div>
             </form>
           </div>

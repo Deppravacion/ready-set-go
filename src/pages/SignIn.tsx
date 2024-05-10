@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useAuthProvider } from "../providers/AuthContext";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import profileImage from "../assets/guyprofile.jpg";
 
 export const SignIn = () => {
   const { handleLogin } = useAuthProvider();
@@ -44,6 +45,11 @@ export const SignIn = () => {
           <div className='card shrink-0 w-full max-w-sm shadow-2xl bg-base-100'>
             <form className='card-body' onSubmit={handleSubmit}>
               <div className='form-control'>
+                <div className='avatar justify-center'>
+                  <div className='w-36 mask mask-squircle'>
+                    <img src={profileImage} />
+                  </div>
+                </div>
                 <label className='label'>
                   <span className='label-text'>Email</span>
                 </label>

@@ -16,7 +16,11 @@ export type AuthTypes = {
     email: string;
     password: string;
   }) => Promise<boolean>;
-  handleSignUp: () => void;
+  handleSignUp: (
+    email: string,
+    password: string,
+    confrimPassword: string
+  ) => void;
   // handleSignUp: (email: string, password: string) => Promise<boolean>;
   handleLogout: () => void;
 };

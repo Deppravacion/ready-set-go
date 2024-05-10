@@ -67,7 +67,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
       id: data.length + 1,
     };
 
-    const updatedUsers = [...data, newUser];
     await fetch("http://localhost:3004/users", {
       method: "POST",
       headers: {

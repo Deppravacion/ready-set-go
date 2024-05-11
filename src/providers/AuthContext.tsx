@@ -42,6 +42,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
 
   const handleSignUp = async (
     email: string,
+    name: string,
     password: string,
     confirmPassword: string
   ) => {
@@ -63,6 +64,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
 
     const newUser = {
       email,
+      name,
       password,
       id: data.length + 1,
     };

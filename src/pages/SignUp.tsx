@@ -10,14 +10,23 @@ export const SignUp = () => {
   const [confirmPasswordInput, setConfirmPasswordInput] = useState<string>("");
   const { handleSignUp } = useAuthProvider();
   const navigate = useNavigate();
+
   const goToSignIn = () => {
     navigate("/signin");
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log("submitted");
-    handleSignUp(nameInput, emailInput, passwordInput, confirmPasswordInput);
+    const isSignedUp = handleSignUp(
+      nameInput,
+      emailInput,
+      passwordInput,
+      confirmPasswordInput
+    );
+    if (await isSignedUp) {
+      navigate("/home");
+    }
   };
 
   return (

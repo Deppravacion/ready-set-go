@@ -59,7 +59,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
     }
     if (password !== confirmPassword) {
       toast.error("Passwords do not match");
-      return;
+      return false;
     }
 
     const newUser = {
@@ -69,13 +69,19 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
       id: data.length + 1,
     };
 
-    await fetch("http://localhost:3004/users", {
+    const postResponse = await fetch("http://localhost:3004/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newUser),
     });
+    if (!postResponse.ok) {
+      return false;
+    }
+
+    sessionStorage.setItem("user", JSON.stringify(newUser.name));
+    setUser(newUser.name);
     toast.success("User created successfully");
 
     return true;

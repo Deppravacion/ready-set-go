@@ -21,7 +21,7 @@ export type AuthTypes = {
     email: string,
     password: string,
     confrimPassword: string
-  ) => void;
+  ) => Promise<boolean>;
   // handleSignUp: (email: string, password: string) => Promise<boolean>;
   handleLogout: () => void;
 };

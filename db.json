@@ -11,6 +11,18 @@
       "name": "Tester",
       "email": "test@test.com",
       "password": "pass"
+    },
+    {
+      "id": 3,
+      "email": "test22@test.com",
+      "name": "bobby b",
+      "password": "pass"
+    },
+    {
+      "id": 4,
+      "email": "test23@test.com",
+      "name": "ficher",
+      "password": "pass"
     }
   ],
   "stores": [

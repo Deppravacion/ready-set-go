@@ -41,8 +41,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
   };
 
   const handleSignUp = async (
-    email: string,
     name: string,
+    email: string,
     password: string,
     confirmPassword: string
   ) => {

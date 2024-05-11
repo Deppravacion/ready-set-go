@@ -5,6 +5,7 @@ import profileImage from "../assets/girlprofile.jpg";
 
 export const SignUp = () => {
   const [emailInput, setEmailInput] = useState<string>("");
+  const [nameInput, setNameInput] = useState<string>("");
   const [passwordInput, setPasswordInput] = useState<string>("");
   const [confirmPasswordInput, setConfirmPasswordInput] = useState<string>("");
   const { handleSignUp } = useAuthProvider();
@@ -16,7 +17,7 @@ export const SignUp = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log("submitted");
-    handleSignUp(emailInput, passwordInput, confirmPasswordInput);
+    handleSignUp(nameInput, emailInput, passwordInput, confirmPasswordInput);
   };
 
   return (
@@ -38,6 +39,18 @@ export const SignUp = () => {
                 </div>
               </div>
               {/* Daisy avatar */}
+              <label className='label'>
+                <span className='label-text'>Name</span>
+              </label>
+              <input
+                type='text'
+                placeholder='name'
+                className='input input-bordered'
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setNameInput(e.target.value)
+                }
+                required
+              />
               <label className='label'>
                 <span className='label-text'>Email</span>
               </label>
@@ -67,11 +80,11 @@ export const SignUp = () => {
             </div>
             <div className='form-control'>
               <label className='label'>
-                <span className='label-text'>Password</span>
+                <span className='label-text'>Confirm Password</span>
               </label>
               <input
                 type='password'
-                placeholder='password'
+                placeholder='confirm password'
                 className='input input-bordered'
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                   setConfirmPasswordInput(e.target.value)

@@ -2,8 +2,7 @@ import { createContext, useState, useContext, useEffect } from "react";
 import { toast } from "react-toastify";
 import { AuthProviderProps, AuthTypes, appUser } from "../types/AuthTypes";
 
-// import { getUsersFromDB } from "../api/users/get-users"; // functionality moved to the auth provider
-
+import { createUser, getUsersFromDB } from "../api/users/api-users";
 export const AuthContext = createContext<AuthTypes>({} as AuthTypes);
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({
@@ -46,17 +45,14 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
     password: string,
     confirmPassword: string
   ) => {
-    toast.warning("feature in progress");
-    const response = await fetch("http://localhost:3004/users");
-    if (!response.ok) {
-      return false;
-    }
-    const data = await response.json();
+    const data = await getUsersFromDB();
+
     const isExistingUser = data.find((user: appUser) => user.email === email);
     if (isExistingUser) {
       toast.error("User already exists");
       return false;
     }
+
     if (password !== confirmPassword) {
       toast.error("Passwords do not match");
       return false;
@@ -69,17 +65,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
       id: data.length + 1,
     };
 
-    const postResponse = await fetch("http://localhost:3004/users", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newUser),
-    });
-    if (!postResponse.ok) {
-      return false;
-    }
-
+    await createUser(newUser);
     sessionStorage.setItem("user", JSON.stringify(newUser.name));
     setUser(newUser.name);
     toast.success("User created successfully");

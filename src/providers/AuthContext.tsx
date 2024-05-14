@@ -1,18 +1,48 @@
 import { createContext, useState, useContext, useEffect } from "react";
 import { toast } from "react-toastify";
-import { AuthProviderProps, AuthTypes, appUser } from "../types/AuthTypes";
-
+import { AuthProviderProps, AuthTypes, AppUser } from "../types/AuthTypes";
 import { createUser, getUsersFromDB } from "../api/users/api-users";
-export const AuthContext = createContext<AuthTypes>({} as AuthTypes);
 
-export const AuthProvider: React.FC<AuthProviderProps> = ({
-  children,
-}: {
-  children: JSX.Element;
-}) => {
-  const [user, setUser] = useState<string | null>(null);
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+export const AuthContext = createContext({} as AuthTypes);
+
+export const AuthProvider = ({ children }: { children: JSX.Element }) => {
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    password: "",
+    id: "",
+    stores: {
+      id: "",
+      name: "",
+      userId: "",
+      itemId: "",
+    },
+    items: [
+      {
+        id: "",
+        name: "",
+        image: "",
+        description: "",
+        quantity: "",
+        minQuantity: "",
+        storeId: "",
+      },
+    ],
+    favorites: [
+      {
+        userId: "",
+        itemId: "",
+        storeId: "",
+        id: "",
+      },
+    ],
+  });
+
+  // const [user, setUser] = useState<string | null>(null);
+  // const [email, setEmail] = useState<string>("");
+  // const [password, setPassword] = useState<string>("");
+
+  //  note to self: todo list. 1. try/catch 2.user object in auth 3.navigation in auth functions
 
   const handleLogin = async ({
     email,
@@ -27,7 +57,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
     }
     const data = await response.json();
     const user = data.find(
-      (user: appUser) => user.email === email && user.password === password
+      (user: AppUser) => user.email === email && user.password === password
     );
     console.log(user);
 
@@ -45,34 +75,34 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
     password: string,
     confirmPassword: string
   ) => {
-    const data = await getUsersFromDB();
+    try {
+      const data = await getUsersFromDB();
+      if (data.find((user: AppUser) => user.email === email)) {
+        toast.error("User already exists");
+        throw new Error("User already exists");
+      }
 
-    const isExistingUser = data.find((user: appUser) => user.email === email);
-    if (isExistingUser) {
-      toast.error("User already exists");
-      return false;
+      if (password !== confirmPassword) {
+        toast.error("Passwords do not match");
+        throw new Error("Passwords do not match");
+      }
+
+      const newUser = {
+        email,
+        name,
+        password,
+        id: data.length + 1,
+      };
+
+      await createUser(newUser);
+      sessionStorage.setItem("user", JSON.stringify(newUser.name));
+      setUser(newUser.name);
+      toast.success("User created successfully");
+    } catch (error: unknown) {
+      console.error(error);
+      toast.error("Error creating user");
     }
-
-    if (password !== confirmPassword) {
-      toast.error("Passwords do not match");
-      return false;
-    }
-
-    const newUser = {
-      email,
-      name,
-      password,
-      id: data.length + 1,
-    };
-
-    await createUser(newUser);
-    sessionStorage.setItem("user", JSON.stringify(newUser.name));
-    setUser(newUser.name);
-    toast.success("User created successfully");
-
-    return true;
   };
-
   const handleLogout = () => {
     console.log("logging out");
     setUser(null);

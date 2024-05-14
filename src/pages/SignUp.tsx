@@ -18,15 +18,8 @@ export const SignUp = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log("submitted");
-    const isSignedUp = handleSignUp(
-      nameInput,
-      emailInput,
-      passwordInput,
-      confirmPasswordInput
-    );
-    if (await isSignedUp) {
-      navigate("/home");
-    }
+    handleSignUp(nameInput, emailInput, passwordInput, confirmPasswordInput);
+    navigate("/home");
   };
 
   return (

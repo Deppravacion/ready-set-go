@@ -1,21 +1,20 @@
 export type AuthTypes = {
-  user: string | null;
+  user: UserType | null;
 
-  setUser: (user: string | null) => void;
-  // signIn: (user: string) => void;
-  // signOut: () => void;
-  email: string;
-  setEmail: (email: string) => void;
-  password: string;
-  setPassword: (password: string) => void;
-  // handleLogin: () => void;
+  setUser: (user: UserType | null) => void;
+  userStores: StoresType[] | null;
+  setUserStores: (stores: StoresType[] | null) => void;
+  userItems: ItemsType[] | null;
+  setUserItems: (items: ItemsType[] | null) => void;
+  userFavorites: FavoritesType[] | null;
+  setUserFavorites: (favorites: FavoritesType[] | null) => void;
   handleLogin: ({
     email,
     password,
   }: {
     email: string;
     password: string;
-  }) => Promise<boolean>;
+  }) => Promise<void>;
   handleSignUp: (
     name: string,
     email: string,
@@ -26,28 +25,20 @@ export type AuthTypes = {
   handleLogout: () => void;
 };
 
-export type AuthProviderProps = {
-  children: JSX.Element;
-};
-
 export type UserType = {
   id: string;
   name: string;
   email: string;
   password: string;
-  stores: StoresType[];
-  items: ItemType[];
-  favorites: FavoriteType[];
 };
 
 export type StoresType = {
   id: string;
   name: string;
   userId: string;
-  itemId: string;
 };
 
-export type ItemType = {
+export type ItemsType = {
   id: string;
   name: string;
   image: string;
@@ -57,16 +48,9 @@ export type ItemType = {
   storeId: string;
 };
 
-export type FavoriteType = {
-  userId: string;
-  itemId: string;
-  storeId: string;
-  id: string;
-};
-
-export type AppUser = {
-  id: number;
-  name: string;
-  email: string;
-  password: string;
+export type FavoritesType = {
+  userId?: string;
+  itemId?: string;
+  storeId?: string;
+  id?: string;
 };

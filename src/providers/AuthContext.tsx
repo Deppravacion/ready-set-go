@@ -1,48 +1,25 @@
 import { createContext, useState, useContext, useEffect } from "react";
 import { toast } from "react-toastify";
-import { AuthProviderProps, AuthTypes, AppUser } from "../types/AuthTypes";
+import {
+  UserType,
+  AuthTypes,
+  StoresType,
+  ItemsType,
+  FavoritesType,
+} from "../types/AuthTypes";
 import { createUser, getUsersFromDB } from "../api/users/api-users";
 
 export const AuthContext = createContext({} as AuthTypes);
 
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {
-  const [user, setUser] = useState({
-    name: "",
-    email: "",
-    password: "",
-    id: "",
-    stores: {
-      id: "",
-      name: "",
-      userId: "",
-      itemId: "",
-    },
-    items: [
-      {
-        id: "",
-        name: "",
-        image: "",
-        description: "",
-        quantity: "",
-        minQuantity: "",
-        storeId: "",
-      },
-    ],
-    favorites: [
-      {
-        userId: "",
-        itemId: "",
-        storeId: "",
-        id: "",
-      },
-    ],
-  });
+  const [user, setUser] = useState<UserType | null>(null);
+  const [userStores, setUserStores] = useState<StoresType[] | null>(null);
+  const [userItems, setUserItems] = useState<ItemsType[] | null>(null);
+  const [userFavorites, setUserFavorites] = useState<FavoritesType[] | null>(
+    null
+  );
 
-  // const [user, setUser] = useState<string | null>(null);
-  // const [email, setEmail] = useState<string>("");
-  // const [password, setPassword] = useState<string>("");
-
-  //  note to self: todo list. 1. try/catch 2.user object in auth 3.navigation in auth functions
+  //  note to self: set session storage for user object
 
   const handleLogin = async ({
     email,
@@ -51,21 +28,26 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     email: string;
     password: string;
   }) => {
-    const response = await fetch("http://localhost:3004/users");
-    if (!response.ok) {
-      return false;
-    }
-    const data = await response.json();
-    const user = data.find(
-      (user: AppUser) => user.email === email && user.password === password
-    );
-    console.log(user);
+    try {
+      const response = await fetch("http://localhost:3004/users");
+      if (!response.ok) {
+        throw new Error("Error fetching users");
+      }
+      const data = await response.json();
+      const user = data.find(
+        (user: UserType) => user.email === email && user.password === password
+      );
+      console.log(user);
 
-    if (!user) {
-      return false;
-    } else {
-      sessionStorage.setItem("user", JSON.stringify(user.name));
-      return true;
+      if (!user) {
+        throw new Error("User not found");
+      } else {
+        sessionStorage.setItem("authtoken", true.toString());
+        return;
+      }
+    } catch (error: unknown) {
+      console.error(error);
+      toast.error("Error logging in");
     }
   };
 
@@ -77,7 +59,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   ) => {
     try {
       const data = await getUsersFromDB();
-      if (data.find((user: AppUser) => user.email === email)) {
+      if (data.find((user: UserType) => user.email === email)) {
         toast.error("User already exists");
         throw new Error("User already exists");
       }
@@ -96,20 +78,25 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
 
       await createUser(newUser);
       sessionStorage.setItem("user", JSON.stringify(newUser.name));
-      setUser(newUser.name);
+      setUser({
+        email: newUser.email,
+        name: newUser.name,
+        id: newUser.id,
+        password: newUser.password,
+      });
       toast.success("User created successfully");
     } catch (error: unknown) {
       console.error(error);
       toast.error("Error creating user");
     }
   };
+
   const handleLogout = () => {
     console.log("logging out");
     setUser(null);
-    sessionStorage.removeItem("user");
+    sessionStorage.removeItem("authToken");
     if (!user) {
       toast.success("Logged out!");
-
       return true;
     } else {
       console.log(user);
@@ -129,10 +116,12 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
       value={{
         user,
         setUser,
-        email,
-        setEmail,
-        password,
-        setPassword,
+        userStores,
+        setUserStores,
+        userItems,
+        setUserItems,
+        userFavorites,
+        setUserFavorites,
         handleLogin,
         handleSignUp,
         handleLogout,

@@ -47,14 +47,13 @@
     {
       "id": "01",
       "name": "garageFridge",
-      "userId": "01",
-      "itemId": "01"
+      "userId": "01"
+
     },
     {
       "id": "02",
       "name": "lx470",
-      "userId": "01",
-      "itemId": "01"
+      "userId": "01"
     }
   ],
   "items": [

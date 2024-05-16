@@ -1,5 +1,5 @@
 import { toast } from "react-toastify";
-import { AppUser } from "../../types/AuthTypes";
+import { UserType } from "../../types/AuthTypes";
 
 export const getUsersFromDB = async () => {
   const response = await fetch("http://localhost:3004/users");
@@ -20,7 +20,7 @@ export const getUserByEmail = async (email: string) => {
   return user;
 };
 
-export const createUser = async (user: AppUser) => {
+export const createUser = async (user: UserType) => {
   const response = await fetch("http://localhost:3004/users", {
     method: "POST",
     headers: {

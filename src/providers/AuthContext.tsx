@@ -69,34 +69,47 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
         throw new Error("Passwords do not match");
       }
 
-      const newUser = {
+      type NewUserType = {
+        email: string;
+        name: string;
+        password: string;
+        id: string;
+      };
+
+      const newUser: NewUserType = {
         email,
         name,
         password,
-        id: data.length + 1,
+        id: (data.length + 1).toString(),
       };
 
-      await createUser(newUser);
-      // sessionStorage.setItem("user", JSON.stringify(newUser.name));
-      setUser({
-        email: newUser.email,
-        name: newUser.name,
-        id: newUser.id,
-        password: newUser.password,
-        token: "token",
-      });
-      sessionStorage.setItem("user", JSON.stringify(newUser));
-      toast.success("User created successfully");
+      try {
+        await createUser(newUser);
+        setUser({
+          email: newUser.email,
+          name: newUser.name,
+          id: newUser.id,
+          password: newUser.password,
+          // token: "token",
+        });
+        sessionStorage.setItem("user", JSON.stringify(newUser));
+        sessionStorage.setItem("authtoken", true.toString());
+        toast.success("User created successfully");
+      } catch (error: unknown) {
+        console.error(error);
+        toast.error("Error creating user");
+      }
     } catch (error: unknown) {
       console.error(error);
-      toast.error("Error creating user");
+      toast.error("Error signing up");
     }
   };
 
   const handleLogout = () => {
     console.log("logging out");
     setUser(null);
-    sessionStorage.removeItem("authToken");
+    sessionStorage.removeItem("user");
+    sessionStorage.removeItem("authtoken");
     if (!user) {
       toast.success("Logged out!");
       return true;
@@ -107,15 +120,12 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
 
   useEffect(() => {
     const user = sessionStorage.getItem("user");
-    // const user: UserType | null | string = sessionStorage.getItem("user")
-    // const user: UserType | null = JSON.parse(
-    //   sessionStorage.getItem("user") ?? ""
-    // );
     if (user) {
-      setUser(user);
+      setUser(JSON.parse(user));
+      sessionStorage.setItem("authtoken", true.toString());
     }
     console.log("user:", user);
-  }, [user]);
+  }, []);
 
   return (
     <AuthContext.Provider

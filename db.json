@@ -11,7 +11,37 @@
       "name": "Tester",
       "email": "test@test.com",
       "password": "pass"
-    }    
+    },
+    {
+      "id": "3",
+      "email": "klj@asdfsad.com",
+      "name": "kjkjkj",
+      "password": "j"
+    },
+    {
+      "id": "4",
+      "email": "12@asdf.com",
+      "name": "newboo",
+      "password": "k"
+    },
+    {
+      "id": "5",
+      "email": "kj@kj.com",
+      "name": "j",
+      "password": "l"
+    },
+    {
+      "id": "6",
+      "email": "asdf@2.com",
+      "name": "asdf",
+      "password": "0"
+    },
+    {
+      "id": "7",
+      "email": "h@2.comn",
+      "name": "h",
+      "password": "m"
+    }
   ],
   "stores": [
     {

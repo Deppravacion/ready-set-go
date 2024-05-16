@@ -77,13 +77,15 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
       };
 
       await createUser(newUser);
-      sessionStorage.setItem("user", JSON.stringify(newUser.name));
+      // sessionStorage.setItem("user", JSON.stringify(newUser.name));
       setUser({
         email: newUser.email,
         name: newUser.name,
         id: newUser.id,
         password: newUser.password,
+        token: "token",
       });
+      sessionStorage.setItem("user", JSON.stringify(newUser));
       toast.success("User created successfully");
     } catch (error: unknown) {
       console.error(error);
@@ -105,6 +107,10 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
 
   useEffect(() => {
     const user = sessionStorage.getItem("user");
+    // const user: UserType | null | string = sessionStorage.getItem("user")
+    // const user: UserType | null = JSON.parse(
+    //   sessionStorage.getItem("user") ?? ""
+    // );
     if (user) {
       setUser(user);
     }

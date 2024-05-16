@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAuthProvider } from "../providers/AuthContext";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import profileImage from "../assets/guyprofile.jpg";
 
@@ -11,15 +11,12 @@ export const SignIn = () => {
   const navigate = useNavigate();
 
   const handleAuthRoute = async () => {
-    const success = await handleLogin({
+    await handleLogin({
       email: emailInput,
       password: passwordInput,
     });
-    if (success) {
-      navigate("/home");
-    } else {
-      toast.error("SignIn failed!");
-    }
+
+    navigate("/home");
   };
 
   const goToSignUp = () => {

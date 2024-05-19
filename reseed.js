@@ -78,5 +78,5 @@ const db = {
   ],
 };
 
-writeFileSync("db.json", JSON.stringify(db), { encoding: "utf-8" }, 2);
+writeFileSync("db.json", JSON.stringify(db, null, 2), { encoding: "utf-8" });
 console.log("db.json created");

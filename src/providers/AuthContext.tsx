@@ -72,14 +72,12 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
       type NewUserType = {
         email: string;
         name: string;
-        password: string;
         id: string;
       };
 
       const newUser: NewUserType = {
         email,
         name,
-        password,
         id: (data.length + 1).toString(),
       };
 
@@ -89,11 +87,10 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
           email: newUser.email,
           name: newUser.name,
           id: newUser.id,
-          password: newUser.password,
           // token: "token",
         });
         sessionStorage.setItem("user", JSON.stringify(newUser));
-        sessionStorage.setItem("authtoken", true.toString());
+        sessionStorage.setItem("authtoken", "true");
         toast.success("User created successfully");
       } catch (error: unknown) {
         console.error(error);
@@ -122,7 +119,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     const user = sessionStorage.getItem("user");
     if (user) {
       setUser(JSON.parse(user));
-      sessionStorage.setItem("authtoken", true.toString());
+      sessionStorage.setItem("authtoken", "true");
     }
     console.log("user:", user);
   }, []);

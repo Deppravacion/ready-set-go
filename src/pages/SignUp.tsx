@@ -18,7 +18,12 @@ export const SignUp = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log("submitted");
-    handleSignUp(nameInput, emailInput, passwordInput, confirmPasswordInput);
+    await handleSignUp(
+      nameInput,
+      emailInput,
+      passwordInput,
+      confirmPasswordInput
+    );
     navigate("/home");
   };
 

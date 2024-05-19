@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useAuthProvider } from "../providers/AuthContext";
-// import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import profileImage from "../assets/guyprofile.jpg";
 

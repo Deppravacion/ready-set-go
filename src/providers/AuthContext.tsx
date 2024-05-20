@@ -1,25 +1,12 @@
 import { createContext, useState, useContext, useEffect } from "react";
 import { toast } from "react-toastify";
-import {
-  UserType,
-  AuthTypes,
-  StoresType,
-  ItemsType,
-  FavoritesType,
-} from "../types/AuthTypes";
+import { UserType, AuthTypes } from "../types/AuthTypes";
 import { createUser, getUsersFromDB } from "../api/users/api-users";
 
 export const AuthContext = createContext({} as AuthTypes);
 
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   const [user, setUser] = useState<UserType | null>(null);
-  const [userStores, setUserStores] = useState<StoresType[] | null>(null);
-  const [userItems, setUserItems] = useState<ItemsType[] | null>(null);
-  const [userFavorites, setUserFavorites] = useState<FavoritesType[] | null>(
-    null
-  );
-
-  //  note to self: set session storage for user object
 
   const handleLogin = async ({
     email,
@@ -87,7 +74,6 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
           email: newUser.email,
           name: newUser.name,
           id: newUser.id,
-          // token: "token",
         });
         sessionStorage.setItem("user", JSON.stringify(newUser));
         sessionStorage.setItem("authtoken", "true");
@@ -129,12 +115,6 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
       value={{
         user,
         setUser,
-        userStores,
-        setUserStores,
-        userItems,
-        setUserItems,
-        userFavorites,
-        setUserFavorites,
         handleLogin,
         handleSignUp,
         handleLogout,

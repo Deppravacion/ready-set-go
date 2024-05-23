@@ -11,18 +11,55 @@
       "name": "Tester",
       "email": "test@test.com",
       "password": "pass"
+    },
+    {
+      "id": 3,
+      "email": "test22@test.com",
+      "name": "bobby b",
+      "password": "pass"
+    },
+    {
+      "id": 4,
+      "email": "test23@test.com",
+      "name": "ficher",
+      "password": "pass"
+    },
+    {
+      "id": 5,
+      "email": "testb@test.com",
+      "name": "zak",
+      "password": "pass"
+    },
+    {
+      "id": 6,
+      "email": "lkj@lkj.com",
+      "name": ".laksdjhf",
+      "password": "ii"
+    },
+    {
+      "id": 7,
+      "email": "las@las.com",
+      "name": "vegas",
+      "password": "pa"
+    },
+    {
+      "id": "8",
+      "email": "wer@aol.com",
+      "name": "boomshak"
     }
   ],
   "stores": [
     {
       "id": "01",
       "name": "garageFridge",
-      "userId": "01"
+      "userId": "01",
+      "itemId": "01"
     },
     {
       "id": "02",
       "name": "lx470",
-      "userId": "01"
+      "userId": "01",
+      "itemId": "01"
     }
   ],
   "items": [
@@ -56,14 +93,14 @@
   ],
   "favorites": [
     {
-      "itemId": "01",
       "userId": "01",
+      "itemId": "01",
       "storeId": "02",
       "id": "28ab"
     },
     {
-      "itemId": "02",
       "userId": "01",
+      "itemId": "02",
       "storeId": "02",
       "id": "a0b5"
     },

@@ -4,7 +4,7 @@ import {
   FavoritesType,
   ItemsType,
   StoresType,
-} from "../types/StoreTypes";
+} from "../types/AppTypes";
 
 export const AppContext = createContext({} as AppContextTypes);
 export const AppProvider = ({ children }: { children: JSX.Element }) => {

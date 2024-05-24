@@ -45,7 +45,7 @@ export const Home = () => {
   const navigate = useNavigate();
   return (
     <>
-      <div className='card w-96 bg-base-100 shadow-xl'>
+      <div className='card w-96 bg-base-100 shadow-xl m-auto'>
         <div className='container mx-auto p-10 bg-accent rounded-md'>
           <h2 className='text-lg'>{title}</h2>
           <h2 className='text-md'>{subTitle}</h2>

@@ -20,8 +20,8 @@ export const CreateStore = () => {
     e.preventDefault();
     await handleAddStore(name, userId).then(() => {
       setName("");
+      console.log("submitted");
     });
-    console.log("submitted");
     navigate("/home");
   };
 
@@ -60,17 +60,6 @@ export const CreateStore = () => {
                 />
               </label>
             </div>
-            {/* <div className='form-control'>
-              <label className='label'>
-                <span className='label-text'>Add Item</span>
-              </label>
-              <input
-                type='text'
-                placeholder='add first item'
-                className='input input-bordered'
-                required
-              />
-            </div> */}
             <div className='form-control mt-6'>
               <button className='btn btn-primary'>Next</button>
             </div>

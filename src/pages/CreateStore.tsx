@@ -47,21 +47,21 @@ export const CreateStore = () => {
               {/* Daisy avatar */}
 
               {/* Daisy avatar */}
-              <label className='label'>
-                <span className='label-text'>Name</span>
+              <label className='label '>
+                {/* <span className='label-text'>Name</span> */}
                 <input
                   type='text'
                   placeholder='name'
-                  className='input input-bordered'
+                  className='input input-bordered max-w-full'
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                     setName(e.target.value)
                   }
                   required
                 />
               </label>
-            </div>
-            <div className='form-control mt-6'>
-              <button className='btn btn-primary'>Next</button>
+              <div className='form-control mt-6'>
+                <button className='btn btn-primary'>Next</button>
+              </div>
             </div>
           </form>
         </div>

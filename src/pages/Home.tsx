@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useAuthProvider } from "../providers/AuthContext";
 const title: string = "Ready Set Go!";
-const subTitle: string = " Your Home Page";
+// const subTitle: string = " Your Home Page";
 
 type StoreCardProps = {
   cardTitle: string;
@@ -32,6 +32,8 @@ const StoreCard: React.FC<StoreCardProps> = ({ cardTitle, cardBody }) => {
 
 const storeCardData = {
   cardTitle: "store name",
+
+  // cardTitle: ,
   cardBody: [
     "store items list",
     "store items list",
@@ -41,7 +43,10 @@ const storeCardData = {
 };
 
 export const Home = () => {
-  const { handleLogout } = useAuthProvider();
+  const { handleLogout, user } = useAuthProvider();
+  const name = user?.name;
+  const subTitle: string = `Welcome ${name} to your home page!`;
+
   const navigate = useNavigate();
   return (
     <>
@@ -78,7 +83,10 @@ export const Home = () => {
             New
           </button> */}
           {/* Open the modal using document.getElementById('ID').showModal() method */}
-          <button className='btn' onClick={() => navigate("/createstore")}>
+          <button
+            className='btn btn-outline rounded-none btn-info'
+            onClick={() => navigate("/createstore")}
+          >
             New
           </button>
           <dialog id='my_modal_2' className='modal'>
@@ -87,7 +95,7 @@ export const Home = () => {
               <p className='py-4'>Press ESC key or click outside to close</p>
             </div>
             <form method='dialog' className='modal-backdrop'>
-              <button>close</button>
+              <button className='btn'>close</button>
             </form>
           </dialog>
         </div>

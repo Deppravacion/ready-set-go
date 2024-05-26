@@ -65,7 +65,7 @@ export const CreateStore = () => {
             </div>
           </form>
         </div>
-        <div className='flex justify-between'>
+        <div className='flex justify-around'>
           <button
             className='btn btn-outline rounded-none btn-warning px-2'
             onClick={() => {
@@ -81,9 +81,9 @@ export const CreateStore = () => {
           >
             Home
           </button>
-          <button className='btn btn-outline rounded-none btn-secondary'>
+          {/* <button className='btn btn-outline rounded-none btn-secondary'>
             Save
-          </button>
+          </button> */}
         </div>
       </div>
     </>

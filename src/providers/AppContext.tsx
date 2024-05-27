@@ -44,8 +44,9 @@ export const AppProvider = ({ children }: { children: JSX.Element }) => {
   };
 
   useEffect(() => {
-    handleGetUserStores(user?.id);
-    console.log(stores);
+    if (user) {
+      handleGetUserStores(user.id);
+    }
   }, [user]);
 
   return (

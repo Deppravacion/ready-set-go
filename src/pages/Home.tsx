@@ -73,14 +73,14 @@ export const Home = () => {
           <h2 className='text-lg'>{title}</h2>
           <h2 className='text-md'>{subTitle}</h2>
         </div>
-        <div className='card-body'>
+        <div className='card-body max-h-[500px] overflow-y-auto'>
           {stores ? (
             stores.map((store) => <StoreCard store={store} key={store.id} />)
           ) : (
             <StoreCard store={defaultStoreCardData.store} />
           )}
         </div>
-        <div className='flex justify-between'>
+        <div className='flex justify-between my-[10px]'>
           <button
             className='btn btn-outline rounded-none btn-warning px-2'
             onClick={() => {

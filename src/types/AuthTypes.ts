@@ -1,5 +1,5 @@
 export type AuthTypes = {
-  user: UserType | null;
+  user?: UserType | null;
 
   setUser: (user: UserType | null) => void;
   handleLogin: ({

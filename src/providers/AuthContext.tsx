@@ -29,6 +29,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
       if (!user) {
         throw new Error("User not found");
       } else {
+        sessionStorage.setItem("user", JSON.stringify(user));
         sessionStorage.setItem("authtoken", true.toString());
         return;
       }
@@ -60,12 +61,14 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
         email: string;
         name: string;
         id: string;
+        password: string;
       };
 
       const newUser: NewUserType = {
         email,
         name,
         id: (data.length + 1).toString(),
+        password,
       };
 
       try {

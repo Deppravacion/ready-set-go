@@ -1,19 +1,20 @@
-import { useContext, useState, createContext, useEffect } from "react";
+import { useContext, createContext, useState, useEffect } from "react";
 import {
   AppContextTypes,
+  StoresType,
   // FavoritesType,
   // ItemsType,
-  StoresType,
+  // StoresType,
 } from "../types/AppTypes";
 import { toast } from "react-toastify";
 import { createStore, getStoresByUserId } from "../api/stores/api-stores";
+import { useAuthProvider } from "./AuthContext";
+import { log } from "console";
 
 export const AppContext = createContext({} as AppContextTypes);
 export const AppProvider = ({ children }: { children: JSX.Element }) => {
   const [stores, setStores] = useState<StoresType[] | null>(null);
-  // const [items, setItems] = useState<ItemsType[] | null>(null);
-  // const [favorites, setFavorites] = useState<FavoritesType[] | null>(null);
-
+  const { user } = useAuthProvider();
   const handleAddStore = async (name: string, userId: string) => {
     // can add checks to see if the store name already exists.
     const newStore = {
@@ -33,31 +34,26 @@ export const AppProvider = ({ children }: { children: JSX.Element }) => {
 
   const handleGetUserStores = async (userId: string) => {
     try {
-      // const response = await fetch(
-      //   `http://localhost:3004/stores?userId=${userId}`
-      // );
-      // if (!response.ok) {
-      //   throw new Error("Error fetching stores");
-      // }
-      // const data = await response.json();
-      // const userStores = data.filter(
-      //   (store: StoresType) => store.userId === userId
-      // );
-      // setStores(userStores);
-      getStoresByUserId(userId);
+      await getStoresByUserId(userId).then((userStores) => {
+        console.log(userStores);
+        setStores(userStores);
+      });
     } catch (error) {
       console.error(error);
       toast.error("Error fetching stores");
     }
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    handleGetUserStores(user?.id || "");
+    console.log(stores);
+  }, []);
 
   return (
     <AppContext.Provider
       value={{
-        // stores,
-        // setStores,
+        stores,
+        setStores,
         handleAddStore,
         handleGetUserStores,
         handleAddItem,

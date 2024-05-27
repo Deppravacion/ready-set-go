@@ -11,51 +11,6 @@
       "name": "Tester",
       "email": "test@test.com",
       "password": "pass"
-    },
-    {
-      "id": 3,
-      "email": "test22@test.com",
-      "name": "bobby b",
-      "password": "pass"
-    },
-    {
-      "id": 4,
-      "email": "test23@test.com",
-      "name": "ficher",
-      "password": "pass"
-    },
-    {
-      "id": 5,
-      "email": "testb@test.com",
-      "name": "zak",
-      "password": "pass"
-    },
-    {
-      "id": 6,
-      "email": "lkj@lkj.com",
-      "name": ".laksdjhf",
-      "password": "ii"
-    },
-    {
-      "id": 7,
-      "email": "las@las.com",
-      "name": "vegas",
-      "password": "pa"
-    },
-    {
-      "id": "8",
-      "email": "wer@aol.com",
-      "name": "boomshak"
-    },
-    {
-      "id": "9",
-      "email": "asd@ol.com",
-      "name": "alex"
-    },
-    {
-      "id": "10",
-      "email": "asdf@ol.com",
-      "name": "sdf"
     }
   ],
   "stores": [
@@ -70,89 +25,9 @@
       "userId": "01"
     },
     {
-      "id": "0.16177741195790363",
-      "name": "",
-      "userId": "10"
-    },
-    {
-      "id": "0.6773411446780111",
-      "name": "",
-      "userId": "10"
-    },
-    {
-      "id": "0.48049676374208117",
-      "name": "",
-      "userId": "10"
-    },
-    {
-      "id": "0.8052849477627986",
-      "name": "",
-      "userId": "10"
-    },
-    {
-      "id": "0.6124488413912386",
-      "name": "",
-      "userId": "10"
-    },
-    {
-      "id": "0.9837282841219666",
-      "name": "",
-      "userId": "10"
-    },
-    {
-      "id": "0.05979602426320718",
-      "name": "",
-      "userId": "10"
-    },
-    {
-      "id": "0.6951143185609547",
-      "name": "",
-      "userId": "10"
-    },
-    {
-      "id": "0.501094319917472",
-      "name": "",
-      "userId": "10"
-    },
-    {
-      "id": "0.5211223013992106",
-      "name": "",
-      "userId": "10"
-    },
-    {
-      "id": "0.5416744423653013",
-      "name": "",
-      "userId": "10"
-    },
-    {
-      "id": "0.5754723736247802",
-      "name": "this works now",
-      "userId": "10"
-    },
-    {
-      "id": "0.9740603226969762",
-      "name": "asdlfkjsadflkjsadf",
-      "userId": "10"
-    },
-    {
-      "id": "0.5424665031821958",
-      "name": "dfg",
-      "userId": "10"
-    },
-    {
-      "id": "0.7201134431155163",
-      "name": "submitted",
-      "userId": "10"
-    },
-    {
-      "id": "0.8701294170759115",
-      "name": "asdf",
-      "userId": "10"
-    },
-    {
-      "id": "0.3909616990986735",
-      "name": "bish",
-      "userId": "10"
+      "id": "0.10113723552839438",
+      "name": "4runner",
+      "userId": ""
     }
   ],
   "items": [
@@ -186,14 +61,14 @@
   ],
   "favorites": [
     {
-      "userId": "01",
       "itemId": "01",
+      "userId": "01",
       "storeId": "02",
       "id": "28ab"
     },
     {
-      "userId": "01",
       "itemId": "02",
+      "userId": "01",
       "storeId": "02",
       "id": "a0b5"
     },

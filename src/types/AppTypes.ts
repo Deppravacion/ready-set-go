@@ -1,13 +1,10 @@
-// export type AppContextTypes = {
-//   stores: StoresType[] | null;
-//   setStores: (stores: StoresType[] | null) => void;
-//   items: ItemsType[] | null;
-//   setItems: (items: ItemsType[] | null) => void;
-//   favorites: FavoritesType[] | null;
-//   setFavorites: (favorites: FavoritesType[] | null) => void;
+export type AppContextTypes = {
+  stores: StoresType[] | null;
+  setStores: (stores: StoresType[] | null) => void;
+
   // ** add these methods next **
   handleAddStore: (name: string, userId: string) => Promise<void>;
-  handleGetUserStores: (userId: string) => Promise<void>;
+  handleGetUserStores: (userId: string) => Promise<void> | undefined;
 
   handleAddItem: (
     id: string,
@@ -32,6 +29,8 @@ export type StoresType = {
   id: string;
   name: string;
   userId: string;
+  items?: ItemsType[];
+  favorites?: FavoritesType[];
 };
 
 export type ItemsType = {

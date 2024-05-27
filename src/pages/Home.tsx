@@ -43,19 +43,26 @@ const StoreCard: React.FC<StoreCardProps> = ({ store }) => {
 const defaultStoreCardData = {
   store: {
     id: "nan",
-    name: "Store Name",
+    name: "Create a New Store",
     userId: "nan",
   },
 };
 
 export const Home = () => {
   const { handleLogout, user } = useAuthProvider();
+  console.log(user, "here lies the user in the HOME component");
   const { stores } = useAppProvider();
   console.log(stores);
   const name = user?.name;
   const subTitle: string = `Welcome ${name} to your home page!`;
   const title: string = "Ready Set Go!";
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user) {
+      console.log(user.id);
+    }
+  }, [stores, user]);
 
   return (
     <>

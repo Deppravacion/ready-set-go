@@ -9,7 +9,6 @@ import {
 import { toast } from "react-toastify";
 import { createStore, getStoresByUserId } from "../api/stores/api-stores";
 import { useAuthProvider } from "./AuthContext";
-import { log } from "console";
 
 export const AppContext = createContext({} as AppContextTypes);
 export const AppProvider = ({ children }: { children: JSX.Element }) => {

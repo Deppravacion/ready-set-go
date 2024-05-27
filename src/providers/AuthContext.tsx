@@ -8,6 +8,15 @@ export const AuthContext = createContext({} as AuthTypes);
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   const [user, setUser] = useState<UserType | null>(null);
 
+  useEffect(() => {
+    const user = sessionStorage.getItem("user");
+    if (user) {
+      setUser(JSON.parse(user));
+      sessionStorage.setItem("authtoken", "true");
+    }
+    console.log("user from AUTHContenxt:", user);
+  }, []);
+
   const handleLogin = async ({
     email,
     password,
@@ -24,7 +33,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
       const user = data.find(
         (user: UserType) => user.email === email && user.password === password
       );
-      console.log(user);
+      console.log(user, " Auth found a user");
 
       if (!user) {
         throw new Error("User not found");
@@ -103,15 +112,6 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
       console.log(user);
     }
   };
-
-  useEffect(() => {
-    const user = sessionStorage.getItem("user");
-    if (user) {
-      setUser(JSON.parse(user));
-      sessionStorage.setItem("authtoken", "true");
-    }
-    console.log("user:", user);
-  }, []);
 
   return (
     <AuthContext.Provider

@@ -33,14 +33,11 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
       const user = data.find(
         (user: UserType) => user.email === email && user.password === password
       );
-      console.log(user, " Auth found a user");
 
-      if (!user) {
-        throw new Error("User not found");
-      } else {
+      if (user) {
         sessionStorage.setItem("user", JSON.stringify(user));
         sessionStorage.setItem("authtoken", true.toString());
-        return;
+        setUser(user);
       }
     } catch (error: unknown) {
       console.error(error);

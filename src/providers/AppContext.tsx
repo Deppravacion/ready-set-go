@@ -12,7 +12,7 @@ import { useAuthProvider } from "./AuthContext";
 
 export const AppContext = createContext({} as AppContextTypes);
 export const AppProvider = ({ children }: { children: JSX.Element }) => {
-  const [stores, setStores] = useState<StoresType[] | null>(null);
+  const [stores, setStores] = useState<StoresType[] | null>();
   const { user } = useAuthProvider();
   const handleAddStore = async (name: string, userId: string) => {
     // can add checks to see if the store name already exists.
@@ -31,7 +31,7 @@ export const AppProvider = ({ children }: { children: JSX.Element }) => {
 
   const handleAddItem = async () => {};
 
-  const handleGetUserStores = async (userId: string) => {
+  const handleGetUserStores = async (userId?: string) => {
     try {
       await getStoresByUserId(userId).then((userStores) => {
         console.log(userStores);
@@ -44,9 +44,9 @@ export const AppProvider = ({ children }: { children: JSX.Element }) => {
   };
 
   useEffect(() => {
-    handleGetUserStores(user?.id || "");
+    handleGetUserStores(user?.id);
     console.log(stores);
-  }, []);
+  }, [user]);
 
   return (
     <AppContext.Provider

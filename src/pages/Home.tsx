@@ -50,6 +50,7 @@ const defaultStoreCardData = {
 
 export const Home = () => {
   const { handleLogout, user } = useAuthProvider();
+  const { handleGetUserStores } = useAppProvider();
   console.log(user, "here lies the user in the HOME component");
   const { stores } = useAppProvider();
   console.log(stores);
@@ -61,6 +62,7 @@ export const Home = () => {
   useEffect(() => {
     if (user) {
       console.log(user.id);
+      handleGetUserStores(user.id);
     }
   }, [stores, user]);
 
@@ -72,8 +74,7 @@ export const Home = () => {
           <h2 className='text-md'>{subTitle}</h2>
         </div>
         <div className='card-body'>
-          {user !== null && user !== undefined ? (
-            stores &&
+          {stores ? (
             stores.map((store) => <StoreCard store={store} key={store.id} />)
           ) : (
             <StoreCard store={defaultStoreCardData.store} />

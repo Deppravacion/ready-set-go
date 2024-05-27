@@ -19,7 +19,7 @@ export const CreateStore = () => {
   ) => {
     e.preventDefault();
     await handleAddStore(name, userId).then(() => {
-      setName("");
+      setName(name);
       console.log("submitted");
     });
     navigate("/home");

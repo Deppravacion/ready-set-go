@@ -11,9 +11,11 @@ type StoreCardProps = {
 
 const StoreCard: React.FC<StoreCardProps> = ({ store }) => {
   const [items, setItems] = useState<ItemsType[] | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getItemsByStoreId(store.id).then((storeItems: ItemsType[]) => {
+      console.log(storeItems);
       setItems(storeItems);
     });
   }, []);
@@ -35,7 +37,9 @@ const StoreCard: React.FC<StoreCardProps> = ({ store }) => {
       </div>
 
       {/* <h2>hello world</h2> */}
-      <button className='btn rounded-none'>expand</button>
+      <button className='btn rounded-none' onClick={() => navigate("/details")}>
+        expand
+      </button>
     </div>
   );
 };
@@ -103,15 +107,6 @@ export const Home = () => {
           >
             New
           </button>
-          <dialog id='my_modal_2' className='modal'>
-            <div className='modal-box'>
-              <h3 className='font-bold text-lg'>Hello!</h3>
-              <p className='py-4'>Press ESC key or click outside to close</p>
-            </div>
-            <form method='dialog' className='modal-backdrop'>
-              <button className='btn'>close</button>
-            </form>
-          </dialog>
         </div>
       </div>
     </>

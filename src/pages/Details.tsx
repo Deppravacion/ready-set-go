@@ -1,3 +1,7 @@
+import { useNavigate } from "react-router-dom";
+import { useAuthProvider } from "../providers/AuthContext";
+import { useAppProvider } from "../providers/AppContext";
+
 const title: string = "Ready Set Go!";
 const subTitle: string = "Store details!";
 
@@ -68,6 +72,9 @@ const CollapseItem: React.FC<CardProps> = ({
 };
 
 export const Details = () => {
+  const navigate = useNavigate();
+  const { handleLogout } = useAuthProvider();
+  const { stores } = useAppProvider();
   return (
     <>
       <div className='card w-96 bg-base-100 shadow-xl'>
@@ -83,15 +90,28 @@ export const Details = () => {
             })}
           {/* ******** */}
         </div>
-        <div className='flex justify-between'>
-          <button className='btn btn-outline rounded-none btn-warning px-2'>
+        <div className='flex justify-between my-[10px]'>
+          <button
+            className='btn btn-outline rounded-none btn-warning px-2'
+            onClick={() => {
+              handleLogout();
+              navigate("/signin");
+            }}
+          >
             Logout
           </button>
-          <button className='btn btn-outline rounded-none btn-success'>
+          <button
+            className='btn btn-outline rounded-none btn-success'
+            onClick={() => navigate("/home")}
+          >
             Home
           </button>
-          <button className='btn btn-outline rounded-none btn-secondary'>
-            Save
+          {/* Open the modal using document.getElementById('ID').showModal() method */}
+          <button
+            className='btn btn-outline rounded-none btn-info'
+            onClick={() => navigate("/createstore")}
+          >
+            New
           </button>
         </div>
       </div>

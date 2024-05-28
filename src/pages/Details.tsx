@@ -11,7 +11,7 @@ type CardProps = {
     description?: string;
   };
 };
-const storeItems = [
+const defaultStoreItems = [
   //hard coded test data
   //this would be replaced with data from the database
   {
@@ -77,8 +77,8 @@ export const Details = () => {
         </div>
         <div className='card-body'>
           {/* ******** */}
-          {storeItems &&
-            storeItems.map((item, i) => {
+          {defaultStoreItems &&
+            defaultStoreItems.map((item, i) => {
               return <CollapseItem key={i} item={item} />;
             })}
           {/* ******** */}

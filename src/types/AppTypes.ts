@@ -1,10 +1,10 @@
 export type AppContextTypes = {
-  stores: StoresType[] | null;
+  stores: StoresType[] | null | undefined;
   setStores: (stores: StoresType[] | null) => void;
 
   // ** add these methods next **
   handleAddStore: (name: string, userId: string) => Promise<void>;
-  handleGetUserStores: (userId: string) => Promise<void> | undefined;
+  handleGetUserStores: (userId: string) => Promise<void>;
 
   handleAddItem: (
     id: string,

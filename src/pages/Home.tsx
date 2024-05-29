@@ -11,6 +11,7 @@ type StoreCardProps = {
 
 const StoreCard: React.FC<StoreCardProps> = ({ store }) => {
   const [items, setItems] = useState<ItemsType[] | null>(null);
+  const { stores } = useAppProvider();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,7 +19,7 @@ const StoreCard: React.FC<StoreCardProps> = ({ store }) => {
       console.log(storeItems);
       setItems(storeItems);
     });
-  }, []);
+  }, [stores]);
 
   return (
     <div className='card shadow-sm bg-slate-200'>
@@ -68,7 +69,7 @@ export const Home = () => {
       console.log(user.id);
       handleGetUserStores(user.id);
     }
-  }, [stores, user]);
+  }, [user]);
 
   return (
     <>

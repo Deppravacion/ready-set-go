@@ -4,7 +4,7 @@
       "id": "01",
       "name": "Robert Paulson",
       "email": "bobby.paulson@readysetgo.com",
-      "password": "123"
+      "password": "password123"
     },
     {
       "id": "02",
@@ -23,43 +23,13 @@
       "id": "02",
       "name": "lx470",
       "userId": "01"
-    },
-    {
-      "id": "0.011530882478147264",
-      "name": "new store",
-      "userId": "01"
-    },
-    {
-      "id": "0.0844374474885532",
-      "name": "testers new stores",
-      "userId": "02"
-    },
-    {
-      "id": "0.39418223732331037",
-      "name": "tester garage freezer",
-      "userId": "02"
-    },
-    {
-      "id": "0.06002239474797988",
-      "name": "mother in laws heart shaped box",
-      "userId": "02"
-    },
-    {
-      "id": "0.8497867453461982",
-      "name": "new test store",
-      "userId": "02"
-    },
-    {
-      "id": "0.8967868233056302",
-      "name": "killtony",
-      "userId": "02"
     }
   ],
   "items": [
     {
       "id": "01",
       "name": "shovel",
-      "image": "shovel.jpg",
+      "image": "https://plus.unsplash.com/premium_photo-1680658496041-f7575066cec2?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "description": "short shovel",
       "quantity": "1",
       "minQuantity": "1",
@@ -68,7 +38,7 @@
     {
       "id": "02",
       "name": "recoveryGear",
-      "image": "recoveryGear.jpg",
+      "image": "https://media.istockphoto.com/id/2101625741/photo/fastenings-for-transporting-goods-straps-steel-shackles-and-ratchet-locks.webp?b=1&s=170667a&w=0&k=20&c=w2DTHxBsWkUjQWtUivHmuNzDgtmPAqQBIhuY5vZFdm0=",
       "description": "straps, shackles, etc",
       "quantity": "1",
       "minQuantity": "1",

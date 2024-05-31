@@ -31,7 +31,8 @@ const db = {
     {
       id: "01",
       name: "shovel",
-      image: "shovel.jpg",
+      image:
+        "https://plus.unsplash.com/premium_photo-1680658496041-f7575066cec2?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       description: "short shovel",
       quantity: "1",
       minQuantity: "1",
@@ -40,7 +41,8 @@ const db = {
     {
       id: "02",
       name: "recoveryGear",
-      image: "recoveryGear.jpg",
+      image:
+        "https://media.istockphoto.com/id/2101625741/photo/fastenings-for-transporting-goods-straps-steel-shackles-and-ratchet-locks.webp?b=1&s=170667a&w=0&k=20&c=w2DTHxBsWkUjQWtUivHmuNzDgtmPAqQBIhuY5vZFdm0=",
       description: "straps, shackles, etc",
       quantity: "1",
       minQuantity: "1",

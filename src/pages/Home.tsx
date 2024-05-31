@@ -38,7 +38,12 @@ const StoreCard: React.FC<StoreCardProps> = ({ store }) => {
       </div>
 
       {/* <h2>hello world</h2> */}
-      <button className='btn rounded-none' onClick={() => navigate("/details")}>
+      <button
+        className='btn rounded-none'
+        // onClick={() => navigate(`/details?storeId=${store.id}`)}
+        onClick={() => navigate(`/testroute/${store.id}`)}
+      >
+        {/* <button className='btn rounded-none' onClick={() => navigate("/details")}> */}
         expand
       </button>
     </div>

@@ -12,6 +12,7 @@ import { SignUp } from "./pages/SignUp";
 import { HowItWorks } from "./pages/HowItWorks";
 import { AuthProvider } from "./providers/AuthContext";
 import { AppProvider } from "./providers/AppContext";
+import { TestingRoute } from "./pages/TestingRoute";
 
 function App() {
   return (
@@ -21,9 +22,11 @@ function App() {
           <Routes>
             <Route element={<PrivateRoutes />}>
               <Route path='/createstore' element={<CreateStore />} />
-              <Route path='/details' element={<Details />} />
+              {/* <Route path='/details' element={<Details />} /> */}
+              <Route path='/details/:storeId' element={<Details />} />
               <Route path='/home' element={<Home />} />
             </Route>
+            <Route path='/testroute/:storeId' element={<TestingRoute />} />
             <Route path='/signin' element={<SignIn />} />
             <Route path='/signup' element={<SignUp />} />
             <Route path='/howitworks' element={<HowItWorks />} />

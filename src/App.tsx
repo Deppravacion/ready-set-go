@@ -22,7 +22,6 @@ function App() {
           <Routes>
             <Route element={<PrivateRoutes />}>
               <Route path='/createstore' element={<CreateStore />} />
-              {/* <Route path='/details' element={<Details />} /> */}
               <Route path='/details/:storeId' element={<Details />} />
               <Route path='/home' element={<Home />} />
             </Route>

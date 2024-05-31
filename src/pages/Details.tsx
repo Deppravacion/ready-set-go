@@ -1,54 +1,31 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useAuthProvider } from "../providers/AuthContext";
 import { useAppProvider } from "../providers/AppContext";
+import { ItemsType } from "../types/AppTypes";
+import { useEffect, useState } from "react";
+import { getItemsByStoreId } from "../api/items/api-items";
 
-const title: string = "Ready Set Go!";
+// const title: string = "Ready Set Go!";
 const subTitle: string = "Store details!";
 
-type CardProps = {
-  item: {
-    id: number;
-    name: string;
-    userId: number;
-    itemId: number;
-    image?: string;
-    description?: string;
-  };
-};
-const defaultStoreItems = [
-  //hard coded test data
-  //this would be replaced with data from the database
-  {
-    id: 1,
-    name: "item 1",
-    userId: 1,
-    itemId: 1,
-    image:
-      "https://images.unsplash.com/photo-1598851418241-f52c34b6e4c3?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    description: "this is a description",
-  },
-  {
-    id: 2,
-    name: "item 2",
-    userId: 1,
-    itemId: 2,
-  },
-  {
-    id: 3,
-    name: "item 3",
-    userId: 1,
-    itemId: 3,
-  },
-  {
-    id: 4,
-    name: "item 4",
-    userId: 1,
-    itemId: 4,
-  },
-];
+type CardProps = { item: ItemsType };
+// const defaultStoreItems = [
+//   {
+//     id: 1,
+//     name: "item 1",
+//     userId: 1,
+//     itemId: 1,
+//     quantity: 10,
+//     minQuantity: 5,
+//     storeId: "1",
+//     image:
+//       "https://images.unsplash.com/photo-1598851418241-f52c34b6e4c3?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+//     description: "this is a description",
+//   },
+// ];
 
 const CollapseItem: React.FC<CardProps> = ({
-  item: { name, id, userId, itemId, image, description },
+  item: { id, name, image, description, quantity, minQuantity, storeId },
 }) => {
   return (
     <div className='collapse collapse-arrow bg-base-200'>
@@ -61,11 +38,13 @@ const CollapseItem: React.FC<CardProps> = ({
           <div className='w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2'>
             <img src={image} />
           </div>
+          {/* <div>image link:{image}</div> */}
         </div>
         <p>{description}</p>
         <p>id: {id}</p>
-        <p>userId: {userId}</p>
-        <p>itemId: {itemId} </p>
+        <p>quantity: {quantity}</p>
+        <p>minimum quantity: {minQuantity} </p>
+        <p>store id: {storeId}</p>
       </div>
     </div>
   );
@@ -75,17 +54,33 @@ export const Details = () => {
   const navigate = useNavigate();
   const { handleLogout } = useAuthProvider();
   const { stores } = useAppProvider();
+  // const store = stores?.find((store) => store.id === storeId);
+  const { storeId } = useParams();
+  const [storeItems, setStoreItems] = useState<ItemsType[]>();
+  const storeName = stores?.find((store) => store.id === storeId)?.name;
+
+  const fetchItems = async () => {
+    const items = await getItemsByStoreId(storeId ?? "");
+    setStoreItems(items);
+  };
+
+  useEffect(() => {
+    fetchItems();
+    console.log("store items:", storeItems);
+    console.log("store name:", storeName);
+  }, [stores]);
+
   return (
     <>
-      <div className='card w-96 bg-base-100 shadow-xl'>
+      <div className='card w-96 bg-base-100 shadow-xl m-auto'>
         <div className='container mx-auto p-10 bg-accent rounded-md'>
-          <h2 className='text-lg'>{title}</h2>
-          <h2 className='text-md'>{subTitle}</h2>
+          <h2 className='text-lg'>{storeName}</h2>
+          <h2 className='text-md'>{`${subTitle} for the store: ${storeId}`}</h2>
         </div>
         <div className='card-body'>
           {/* ******** */}
-          {defaultStoreItems &&
-            defaultStoreItems.map((item, i) => {
+          {storeItems &&
+            storeItems.map((item, i) => {
               return <CollapseItem key={i} item={item} />;
             })}
           {/* ******** */}
@@ -109,7 +104,8 @@ export const Details = () => {
           {/* Open the modal using document.getElementById('ID').showModal() method */}
           <button
             className='btn btn-outline rounded-none btn-info'
-            onClick={() => navigate("/createstore")}
+            // onClick={() => navigate("/createstore")}
+            // this should navigate to the create ITEM page
           >
             New
           </button>

@@ -40,8 +40,8 @@ const StoreCard: React.FC<StoreCardProps> = ({ store }) => {
       {/* <h2>hello world</h2> */}
       <button
         className='btn rounded-none'
-        // onClick={() => navigate(`/details?storeId=${store.id}`)}
-        onClick={() => navigate(`/testroute/${store.id}`)}
+        onClick={() => navigate(`/details/${store.id}`)}
+        // onClick={() => navigate(`/testroute/${store.id}`)}
       >
         {/* <button className='btn rounded-none' onClick={() => navigate("/details")}> */}
         expand

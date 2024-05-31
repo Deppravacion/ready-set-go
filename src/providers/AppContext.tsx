@@ -31,7 +31,7 @@ export const AppProvider = ({ children }: { children: JSX.Element }) => {
 
   const handleAddItem = async () => {};
 
-  const handleGetUserStores = async (userId?: string) => {
+  const handleGetUserStores = async (userId: string) => {
     try {
       await getStoresByUserId(userId).then((userStores) => {
         console.log(userStores);

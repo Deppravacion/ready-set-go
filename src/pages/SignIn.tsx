@@ -2,9 +2,11 @@ import { useState } from "react";
 import { useAuthProvider } from "../providers/AuthContext";
 import { useNavigate } from "react-router-dom";
 import profileImage from "../assets/guyprofile.jpg";
+import { useAppProvider } from "../providers/AppContext";
 
 export const SignIn = () => {
   const { handleLogin } = useAuthProvider();
+  const { userTheme } = useAppProvider();
   const [emailInput, setEmailInput] = useState<string>("");
   const [passwordInput, setPasswordInput] = useState<string>("");
   const navigate = useNavigate();
@@ -30,7 +32,7 @@ export const SignIn = () => {
   };
   return (
     <>
-      <div className='hero min-h-screen '>
+      <div data-theme={userTheme} className='hero min-h-screen '>
         <div className='hero-content flex-col lg:flex-row-reverse'>
           <div className='text-center lg:text-left'>
             <h1 className='text-5xl font-bold'>Login now!</h1>

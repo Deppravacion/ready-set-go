@@ -11,7 +11,7 @@ type StoreCardProps = {
 
 const StoreCard: React.FC<StoreCardProps> = ({ store }) => {
   const [items, setItems] = useState<ItemsType[] | null>(null);
-  const { stores } = useAppProvider();
+  const { stores, userTheme } = useAppProvider();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -60,7 +60,7 @@ const defaultStoreCardData = {
 
 export const Home = () => {
   const { handleLogout, user } = useAuthProvider();
-  const { handleGetUserStores } = useAppProvider();
+  const { handleGetUserStores, userTheme } = useAppProvider();
   console.log(user, "here lies the user in the HOME component");
   const { stores } = useAppProvider();
   console.log(stores);
@@ -78,7 +78,10 @@ export const Home = () => {
 
   return (
     <>
-      <div className='card w-96 bg-base-100 shadow-xl m-auto'>
+      <div
+        data-theme={userTheme}
+        className='card w-96 bg-base-100 shadow-xl m-auto'
+      >
         <div className='container mx-auto p-10 bg-accent rounded-md'>
           <h2 className='text-lg'>{title}</h2>
           <h2 className='text-md'>{subTitle}</h2>

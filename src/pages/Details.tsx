@@ -5,24 +5,9 @@ import { ItemsType } from "../types/AppTypes";
 import { useEffect, useState } from "react";
 import { getItemsByStoreId } from "../api/items/api-items";
 
-// const title: string = "Ready Set Go!";
 const subTitle: string = "Store details!";
 
 type CardProps = { item: ItemsType };
-// const defaultStoreItems = [
-//   {
-//     id: 1,
-//     name: "item 1",
-//     userId: 1,
-//     itemId: 1,
-//     quantity: 10,
-//     minQuantity: 5,
-//     storeId: "1",
-//     image:
-//       "https://images.unsplash.com/photo-1598851418241-f52c34b6e4c3?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-//     description: "this is a description",
-//   },
-// ];
 
 const CollapseItem: React.FC<CardProps> = ({
   item: { id, name, image, description, quantity, minQuantity, storeId },

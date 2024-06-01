@@ -15,6 +15,8 @@ export type AppContextTypes = {
     minQuantity: string,
     storeId: string
   ) => Promise<void>;
+  userTheme: string;
+  setUserTheme: (theme: string) => void;
   // handleAddFavorite: (
   //   userId: string,
   //   itemId: string,

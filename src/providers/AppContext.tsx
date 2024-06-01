@@ -13,6 +13,7 @@ import { useAuthProvider } from "./AuthContext";
 export const AppContext = createContext({} as AppContextTypes);
 export const AppProvider = ({ children }: { children: JSX.Element }) => {
   const [stores, setStores] = useState<StoresType[] | null>();
+  const [userTheme, setUserTheme] = useState("business");
   const { user } = useAuthProvider();
   const handleAddStore = async (name: string, userId: string) => {
     // can add checks to see if the store name already exists.
@@ -57,6 +58,8 @@ export const AppProvider = ({ children }: { children: JSX.Element }) => {
         handleAddStore,
         handleGetUserStores,
         handleAddItem,
+        userTheme,
+        setUserTheme,
         // items,
         // setItems,
         // favorites,

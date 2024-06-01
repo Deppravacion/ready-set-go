@@ -28,25 +28,46 @@ const CollapseItem: React.FC<CardProps> = ({
   item: { id, name, image, description, quantity, minQuantity, storeId },
 }) => {
   return (
-    <div className='collapse collapse-arrow bg-base-200'>
-      <input type='checkbox' className='peer' />
-      <div className='collapse-title bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content'>
-        name: {name}
-      </div>
-      <div className='collapse-content bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content'>
-        <div className='avatar'>
-          <div className='w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2'>
-            <img src={image} />
-          </div>
-          {/* <div>image link:{image}</div> */}
+    <>
+      <div className='collapse collapse-arrow bg-base-200'>
+        <input type='checkbox' className='peer' />
+        <div className='collapse-title bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content'>
+          name: {name}
         </div>
-        <p>{description}</p>
-        <p>id: {id}</p>
-        <p>quantity: {quantity}</p>
-        <p>minimum quantity: {minQuantity} </p>
-        <p>store id: {storeId}</p>
+        <div className='collapse-content bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content'>
+          <div className='avatar'>
+            <div className='w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2'>
+              <img src={image} />
+            </div>
+            {/* <div>image link:{image}</div> */}
+          </div>
+          <p>{description}</p>
+          {/* <p>id: {id}</p> */}
+          <p>quantity: {quantity}</p>
+          <p>minimum quantity: {minQuantity} </p>
+          <ItemsInterface />
+        </div>
       </div>
-    </div>
+    </>
+  );
+};
+
+const ItemsInterface = () => {
+  return (
+    <>
+      <div className='flex  gap-1 flex-col justify-center text-2xl mb-1'>
+        <button className='btn  btn-warning btn-sm min-w-16 text-2xl items-center'>
+          -
+        </button>
+        <button className='btn btn-info flex btn-sm min-w-16 text-2xl items-center'>
+          +
+        </button>
+      </div>
+      <div className='flex justify-around'>
+        <button className='btn btn-error btn-sm min-w-16'>Delete </button>
+        <button className='btn btn-success btn-sm min-w-16'>Fav</button>
+      </div>
+    </>
   );
 };
 
@@ -54,7 +75,6 @@ export const Details = () => {
   const navigate = useNavigate();
   const { handleLogout } = useAuthProvider();
   const { stores } = useAppProvider();
-  // const store = stores?.find((store) => store.id === storeId);
   const { storeId } = useParams();
   const [storeItems, setStoreItems] = useState<ItemsType[]>();
   const storeName = stores?.find((store) => store.id === storeId)?.name;
@@ -85,6 +105,7 @@ export const Details = () => {
             })}
           {/* ******** */}
         </div>
+
         <div className='flex justify-between my-[10px]'>
           <button
             className='btn btn-outline rounded-none btn-warning px-2'

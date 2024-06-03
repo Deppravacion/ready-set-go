@@ -6,7 +6,7 @@ const db = {
       id: "01",
       name: "Robert Paulson",
       email: "bobby.paulson@readysetgo.com",
-      password: "password123",
+      password: "pass",
     },
     {
       id: "02",
@@ -61,21 +61,11 @@ const db = {
   favorites: [
     {
       itemId: "01",
-      userId: "01",
-      storeId: "02",
       id: "28ab",
     },
     {
       itemId: "02",
-      userId: "01",
-      storeId: "02",
       id: "a0b5",
-    },
-    {
-      userId: "01",
-      itemId: "03",
-      storeId: "01",
-      id: "6d93",
     },
   ],
 };

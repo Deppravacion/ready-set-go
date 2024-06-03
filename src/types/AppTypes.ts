@@ -17,13 +17,7 @@ export type AppContextTypes = {
   ) => Promise<void>;
   userTheme: string;
   setUserTheme: (theme: string) => void;
-  // handleAddFavorite: (
-  //   userId: string,
-  //   itemId: string,
-  //   storeId: string
-  // ) => Promise<void>;
-  // handleDeleteFavorite: (id: string) => Promise<void>;
-  // handleDeleteItem: (id: string) => Promise<void>;
+  handleDeleteItem: (id: string) => Promise<void>;
   // handleDeleteStore: (id: string) => Promise<void>;
 };
 
@@ -46,8 +40,6 @@ export type ItemsType = {
 };
 
 export type FavoritesType = {
-  userId: string;
   itemId: string;
-  storeId: string;
   id: string;
 };

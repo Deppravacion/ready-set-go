@@ -2,25 +2,39 @@ import { toast } from "react-toastify";
 import { ItemsType } from "../../types/AppTypes";
 
 export const getItemsFromDB = async () => {
-  const response = await fetch(`http://localhost:3004/items`);
-  if (!response.ok) {
-    toast.error("Error fetching items");
-    return false;
-  }
-  const items = await response.json();
-  return items;
+  // const response = await fetch(`http://localhost:3004/items`);
+  // if (!response.ok) {
+  //   toast.error("Error fetching items");
+  //   return false;
+  // }
+  // const items = await response.json();
+  // return items;
+  return await fetch(`http://localhost:3004/items`).then((response) =>
+    response.json()
+  );
 };
 
 export const getItemsByStoreId = async (storeId: string) => {
-  const items = await getItemsFromDB();
-  const storeItems = items.filter(
-    (item: ItemsType) => item.storeId === storeId
-  );
-
-  if (!storeItems) {
-    return false;
+  try {
+    const items = await getItemsFromDB();
+    const storeItems = items.filter(
+      (item: ItemsType) => item.storeId === storeId
+    );
+    return storeItems;
+  } catch (error) {
+    console.error(error);
+    toast.error("Error fetching items");
   }
-  return storeItems;
+};
+
+export const getItemById = async (storeId: string, itemId: string) => {
+  try {
+    const items = await getItemsByStoreId(storeId);
+    return items.filter((item: ItemsType) => item.id === itemId);
+  } catch (error) {
+    console.error(error);
+    toast.error("Error fetching item");
+  }
 };
 
 export const createItem = async (item: ItemsType) => {
@@ -38,13 +52,54 @@ export const createItem = async (item: ItemsType) => {
   return true;
 };
 
+export const increaseItemQuantity = async (storeId: string, itemId: string) => {
+  try {
+    const item = await getItemById(storeId, itemId);
+    const newQuantity = Number(item[0].quantity) + 1;
+    return await fetch(`http://localhost:3004/items/${itemId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ quantity: newQuantity }),
+    });
+  } catch (error) {
+    console.error(error);
+    toast.error("Error increasing item quantity");
+  }
+};
+
+export const decreaseItemQuantity = async (storeId: string, itemId: string) => {
+  try {
+    const item = await getItemById(storeId, itemId);
+    const newQuantity = Number(item[0].quantity) - 1;
+    if (newQuantity >= 0) {
+      return await fetch(`http://localhost:3004/items/${itemId}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ quantity: newQuantity }),
+      });
+    } else {
+      toast.error("Quantity cannot be less than 0");
+    }
+  } catch (error) {
+    console.error(error);
+    toast.error("Error decreasing item quantity");
+  }
+};
+
 export const deleteItem = async (id: string) => {
-  const response = await fetch(`http://localhost:3004/items/${id}`, {
+  return await fetch(`http://localhost:3004/items/${id}`, {
     method: "DELETE",
   });
-  if (!response.ok) {
-    toast.error("Error deleting item");
-    return false;
-  }
-  return true;
+  // const response = await fetch(`http://localhost:3004/items/${id}`, {
+  //   method: "DELETE",
+  // });
+  // if (!response.ok) {
+  //   toast.error("Error deleting item");
+  //   return false;
+  // }
+  // return true;
 };

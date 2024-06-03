@@ -2,49 +2,58 @@ import { toast } from "react-toastify";
 import { FavoritesType } from "../../types/AppTypes";
 
 export const getFavoritesFromDB = async () => {
-  const response = await fetch(`http://localhost:3004/favorites`);
-  if (!response.ok) {
-    toast.error("Error fetching favorites");
-    return false;
-  }
-  const favorites = await response.json();
-  return favorites;
+  return await fetch(`http://localhost:3004/favorites`).then((response) =>
+    response.json()
+  );
 };
 
 export const getFavoritesByItemId = async (itemId: string) => {
-  const favorites = await getFavoritesFromDB();
-  const itemFavorites = favorites.filter(
-    (favorite: FavoritesType) => favorite.itemId === itemId
-  );
-
-  if (!itemFavorites) {
-    return false;
+  try {
+    const favorites = await getFavoritesFromDB();
+    return favorites.filter(
+      (favorite: FavoritesType) => favorite.itemId === itemId
+    );
+  } catch (error) {
+    console.error(error);
+    toast.error("Error fetching favorites");
   }
-  return itemFavorites;
 };
 
 export const createFavorite = async (favorite: FavoritesType) => {
-  const response = await fetch("http://localhost:3004/favorites", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(favorite),
-  });
-  if (!response.ok) {
+  try {
+    return await fetch("http://localhost:3004/favorites", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(favorite),
+    });
+  } catch (error) {
+    console.error(error);
     toast.error("Error creating favorite");
-    return false;
   }
-  return true;
 };
 
 export const deleteFavoriteById = async (id: string) => {
-  const response = await fetch(`http://localhost:3004/favorites/${id}`, {
+  return await fetch(`http://localhost:3004/favorites/${id}`, {
     method: "DELETE",
   });
-  if (!response.ok) {
-    toast.error("Error deleting favorite");
-    return false;
+};
+
+export const toggleFavorite = async (itemId: string) => {
+  const favorites = await getFavoritesByItemId(itemId);
+  try {
+    if (favorites.length === 0) {
+      const newFavorite = {
+        itemId,
+        id: Math.random().toString(),
+      };
+      await createFavorite(newFavorite);
+    } else {
+      await deleteFavoriteById(favorites[0].id);
+    }
+  } catch (error) {
+    console.error(error);
+    toast.error("Error toggling favorite");
   }
-  return true;
 };

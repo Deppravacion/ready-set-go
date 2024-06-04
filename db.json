@@ -62,6 +62,15 @@
       "quantity": "99",
       "minQuantity": "18",
       "storeId": "01"
+    },
+    {
+      "id": "",
+      "name": "testItem",
+      "image": "https://images.unsplash.com/photo-1716125581956-81ca1b3f6ad6?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "description": "test it",
+      "quantity": "1",
+      "minQuantity": "1",
+      "storeId": "01"
     }
   ],
   "favorites": [

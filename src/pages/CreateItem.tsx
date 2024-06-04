@@ -55,13 +55,56 @@ export const CreateItem = () => {
 
               {/* Daisy avatar */}
               <label className='label '>
-                {/* <span className='label-text'>Name</span> */}
                 <input
                   type='text'
                   placeholder='name'
                   className='input input-bordered max-w-full'
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                     setItem({ ...item, name: e.target.value })
+                  }
+                  required
+                />
+              </label>
+              <label className='label '>
+                <input
+                  type='text'
+                  placeholder='image'
+                  className='input input-bordered max-w-full'
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    setItem({ ...item, image: e.target.value })
+                  }
+                  required
+                />
+              </label>
+              <label className='label '>
+                <input
+                  type='text'
+                  placeholder='description'
+                  className='input input-bordered max-w-full'
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    setItem({ ...item, description: e.target.value })
+                  }
+                  required
+                />
+              </label>
+              <label className='label '>
+                <input
+                  type='text'
+                  placeholder='quantity'
+                  className='input input-bordered max-w-full'
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    setItem({ ...item, quantity: e.target.value })
+                  }
+                  required
+                />
+              </label>
+              <label className='label '>
+                <input
+                  type='text'
+                  placeholder='minQuantity'
+                  className='input input-bordered max-w-full'
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    setItem({ ...item, minQuantity: e.target.value })
                   }
                   required
                 />

@@ -13,6 +13,7 @@ import { HowItWorks } from "./pages/HowItWorks";
 import { AuthProvider } from "./providers/AuthContext";
 import { AppProvider } from "./providers/AppContext";
 import { TestingRoute } from "./pages/TestingRoute";
+import { CreateItem } from "./pages/CreateItem";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Routes>
             <Route element={<PrivateRoutes />}>
               <Route path='/createstore' element={<CreateStore />} />
+              <Route path='/createitem/:storeId' element={<CreateItem />} />
               <Route path='/details/:storeId' element={<Details />} />
               <Route path='/home' element={<Home />} />
             </Route>

@@ -1,4 +1,4 @@
-import { FavoritesType, ItemsType, StoresType } from "../types/AppTypes";
+import { ItemsType, StoresType } from "../types/AppTypes";
 import { useAuthProvider } from "../providers/AuthContext";
 import { useAppProvider } from "../providers/AppContext";
 import { useNavigate } from "react-router-dom";
@@ -110,7 +110,7 @@ export const Home = () => {
           {/* Open the modal using document.getElementById('ID').showModal() method */}
           <button
             className='btn btn-outline rounded-none btn-secondary'
-            onClick={() => navigate("/createstore")}
+            onClick={() => navigate(`/createstore`)}
           >
             New
           </button>

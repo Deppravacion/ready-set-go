@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useAppProvider } from "../providers/AppContext";
 import { useAuthProvider } from "../providers/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { ItemsType } from "../types/AppTypes";
 
 const title: string = "Ready Set Go!";
-const subTitle: string = " Create a Store!";
+const subTitle: string = " Create a New Item!";
 
 const blankItem: ItemsType = {
   id: "",
@@ -20,7 +20,9 @@ const blankItem: ItemsType = {
 export const CreateItem = () => {
   const navigate = useNavigate();
   const { handleCreateItem } = useAppProvider();
+  const { handleLogout } = useAuthProvider();
   const [item, setItem] = useState<ItemsType>(blankItem);
+  const { storeId } = useParams();
 
   const handleSubmit = async (
     e: React.FormEvent<HTMLFormElement>,
@@ -45,7 +47,7 @@ export const CreateItem = () => {
           <form
             className='card-body'
             onSubmit={(e: React.FormEvent<HTMLFormElement>) =>
-              handleSubmit(e, { item, storeId })
+              handleSubmit(e, { item, storeId: storeId ?? "" })
             }
           >
             <div className='form-control'>
@@ -59,7 +61,7 @@ export const CreateItem = () => {
                   placeholder='name'
                   className='input input-bordered max-w-full'
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                    setName(e.target.value)
+                    setItem({ ...item, name: e.target.value })
                   }
                   required
                 />
@@ -82,9 +84,9 @@ export const CreateItem = () => {
           </button>
           <button
             className='btn btn-outline rounded-none btn-success'
-            onClick={() => navigate("/home")}
+            onClick={() => navigate(-1)}
           >
-            Home
+            Back
           </button>
         </div>
       </div>

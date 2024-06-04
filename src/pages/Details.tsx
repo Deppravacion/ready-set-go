@@ -169,7 +169,7 @@ export const Details = () => {
           {/* Open the modal using document.getElementById('ID').showModal() method */}
           <button
             className='btn btn-outline rounded-none btn-info'
-            // onClick={() => navigate("/createstore")}
+            onClick={() => navigate(`/createitem/${storeId}`)}
             // this should navigate to the create ITEM page
           >
             New

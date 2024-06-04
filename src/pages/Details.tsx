@@ -124,6 +124,7 @@ export const Details = () => {
 
   useEffect(() => {
     fetchItems();
+    fetchFavorites();
   }, [stores, storeItems]);
 
   return (

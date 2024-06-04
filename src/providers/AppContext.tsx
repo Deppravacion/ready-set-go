@@ -1,6 +1,7 @@
 import { useContext, createContext, useState, useEffect } from "react";
 import {
   AppContextTypes,
+  ItemsType,
   StoresType,
   // FavoritesType,
   // ItemsType,
@@ -9,7 +10,11 @@ import {
 import { toast } from "react-toastify";
 import { createStore, getStoresByUserId } from "../api/stores/api-stores";
 import { useAuthProvider } from "./AuthContext";
-import { deleteItem } from "../api/items/api-items";
+import {
+  createItem,
+  deleteItem,
+  getItemsByStoreId,
+} from "../api/items/api-items";
 
 export const AppContext = createContext({} as AppContextTypes);
 export const AppProvider = ({ children }: { children: JSX.Element }) => {
@@ -32,7 +37,30 @@ export const AppProvider = ({ children }: { children: JSX.Element }) => {
     }
   };
 
-  const handleAddItem = async () => {};
+  const handleCreateItem = async (item: ItemsType, storeId: string) => {
+    const items = await getItemsByStoreId(storeId);
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].name.toLowerCase() === item.name.toLowerCase()) {
+        toast.error("Item already exists");
+        return;
+      }
+    }
+    try {
+      const newItem = {
+        id: item.id,
+        name: item.name,
+        image: item.image,
+        description: item.description,
+        quantity: item.quantity,
+        minQuantity: item.minQuantity,
+        storeId: storeId,
+      };
+      await createItem(newItem);
+    } catch (error) {
+      console.error(error);
+      toast.error("Error creating item");
+    }
+  };
 
   const handleDeleteItem = async (id: string) => {
     try {
@@ -67,7 +95,7 @@ export const AppProvider = ({ children }: { children: JSX.Element }) => {
         setStores,
         handleAddStore,
         handleGetUserStores,
-        handleAddItem,
+        handleCreateItem,
         handleDeleteItem,
         userTheme,
         setUserTheme,

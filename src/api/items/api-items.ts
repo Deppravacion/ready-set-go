@@ -38,18 +38,13 @@ export const getItemById = async (storeId: string, itemId: string) => {
 };
 
 export const createItem = async (item: ItemsType) => {
-  const response = await fetch("http://localhost:3004/items", {
+  return await fetch("http://localhost:3004/items", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(item),
   });
-  if (!response.ok) {
-    toast.error("Error creating item");
-    return false;
-  }
-  return true;
 };
 
 export const increaseItemQuantity = async (storeId: string, itemId: string) => {

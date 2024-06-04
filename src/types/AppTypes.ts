@@ -6,15 +6,8 @@ export type AppContextTypes = {
   handleAddStore: (name: string, userId: string) => Promise<void>;
   handleGetUserStores: (userId: string) => Promise<void>;
 
-  handleAddItem: (
-    id: string,
-    name: string,
-    image: string,
-    description: string,
-    quantity: string,
-    minQuantity: string,
-    storeId: string
-  ) => Promise<void>;
+  handleCreateItem: (item: ItemsType, storeId: string) => Promise<void>;
+
   userTheme: string;
   setUserTheme: (theme: string) => void;
   handleDeleteItem: (id: string) => Promise<void>;

@@ -2,30 +2,36 @@ import { useState } from "react";
 import { useAppProvider } from "../providers/AppContext";
 import { useAuthProvider } from "../providers/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { ItemsType } from "../types/AppTypes";
 
 const title: string = "Ready Set Go!";
 const subTitle: string = " Create a Store!";
 
-export const CreateStore = () => {
-  const { user, handleLogout } = useAuthProvider();
+const blankItem: ItemsType = {
+  id: "",
+  name: "",
+  image: "",
+  description: "",
+  quantity: "",
+  minQuantity: "",
+  storeId: "",
+};
+//inprogress
+export const CreateItem = () => {
   const navigate = useNavigate();
-  const { handleAddStore } = useAppProvider();
-
-  const [name, setName] = useState<string>("");
+  const { handleCreateItem } = useAppProvider();
+  const [item, setItem] = useState<ItemsType>(blankItem);
 
   const handleSubmit = async (
     e: React.FormEvent<HTMLFormElement>,
-    { name, userId }: { name: string; userId: string }
+    { item, storeId }: { item: ItemsType; storeId: string }
   ) => {
     e.preventDefault();
-    await handleAddStore(name, userId).then(() => {
-      setName(name);
-      console.log("submitted");
+    await handleCreateItem(item, storeId).then(() => {
+      setItem(item);
     });
     navigate("/home");
   };
-
-  const userId = user?.id || "";
 
   return (
     <>
@@ -39,7 +45,7 @@ export const CreateStore = () => {
           <form
             className='card-body'
             onSubmit={(e: React.FormEvent<HTMLFormElement>) =>
-              handleSubmit(e, { name: name, userId: userId })
+              handleSubmit(e, { item, storeId })
             }
           >
             <div className='form-control'>

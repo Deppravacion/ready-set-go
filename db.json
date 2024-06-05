@@ -23,16 +23,6 @@
       "id": "02",
       "name": "lx470",
       "userId": "01"
-    },
-    {
-      "id": "0.6891176490688538",
-      "name": "office",
-      "userId": "01"
-    },
-    {
-      "id": "0.7085429205363594",
-      "name": "trailer",
-      "userId": "01"
     }
   ],
   "items": [
@@ -62,15 +52,6 @@
       "quantity": "99",
       "minQuantity": "18",
       "storeId": "01"
-    },
-    {
-      "id": "",
-      "name": "testItem",
-      "image": "https://images.unsplash.com/photo-1716125581956-81ca1b3f6ad6?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "description": "test it",
-      "quantity": "1",
-      "minQuantity": "1",
-      "storeId": "01"
     }
   ],
   "favorites": [
@@ -79,8 +60,8 @@
       "id": "28ab"
     },
     {
-      "id": "0.42356604397836506",
-      "itemId": "03"
+      "itemId": "02",
+      "id": "a0b5"
     }
   ]
 }

@@ -22,7 +22,7 @@ type CardProps = {
 };
 
 const CollapseItem: React.FC<CardProps> = ({ item, fetchItems, favorites }) => {
-  const { id, name, image, description, quantity, minQuantity, storeId } = item;
+  const { id, name, image, description, quantity, minQuantity } = item;
   const isFavorite = favorites
     ? favorites.some((fav) => fav.itemId === id)
     : false;
@@ -59,11 +59,7 @@ const CollapseItem: React.FC<CardProps> = ({ item, fetchItems, favorites }) => {
   );
 };
 
-const ItemsInterface: React.FC<CardProps> = ({
-  item,
-  fetchItems,
-  favorites,
-}) => {
+const ItemsInterface: React.FC<CardProps> = ({ item, fetchItems }) => {
   const { handleDeleteItem } = useAppProvider();
   const deleteItem = () => {
     handleDeleteItem(item.id);
@@ -170,7 +166,6 @@ export const Details = () => {
           <button
             className='btn btn-outline rounded-none btn-info'
             onClick={() => navigate(`/createitem/${storeId}`)}
-            // this should navigate to the create ITEM page
           >
             New
           </button>

@@ -8,7 +8,7 @@ const title: string = "Ready Set Go!";
 const subTitle: string = " Create a New Item!";
 
 const blankItem: ItemsType = {
-  id: "",
+  id: Math.random().toString(),
   name: "",
   image: "",
   description: "",
@@ -30,7 +30,7 @@ export const CreateItem = () => {
   ) => {
     e.preventDefault();
     await handleCreateItem(item, storeId).then(() => {
-      setItem(item);
+      setItem({ ...item });
     });
     navigate("/home");
   };

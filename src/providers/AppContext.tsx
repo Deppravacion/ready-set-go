@@ -1,12 +1,5 @@
 import { useContext, createContext, useState, useEffect } from "react";
-import {
-  AppContextTypes,
-  ItemsType,
-  StoresType,
-  // FavoritesType,
-  // ItemsType,
-  // StoresType,
-} from "../types/AppTypes";
+import { AppContextTypes, ItemsType, StoresType } from "../types/AppTypes";
 import { toast } from "react-toastify";
 import { createStore, getStoresByUserId } from "../api/stores/api-stores";
 import { useAuthProvider } from "./AuthContext";
@@ -23,7 +16,6 @@ export const AppProvider = ({ children }: { children: JSX.Element }) => {
   const { user } = useAuthProvider();
 
   const handleAddStore = async (name: string, userId: string) => {
-    // can add checks to see if the store name already exists.
     const newStore = {
       id: Math.random().toString(),
       name,
@@ -102,7 +94,7 @@ export const AppProvider = ({ children }: { children: JSX.Element }) => {
         // items,
         // setItems,
         // favorites,
-        // setFavorites,
+        // setFavorites,+
       }}
     >
       {children}

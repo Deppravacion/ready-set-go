@@ -33,7 +33,6 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
       const user = data.find(
         (user: UserType) => user.email === email && user.password === password
       );
-
       if (user) {
         sessionStorage.setItem("user", JSON.stringify(user));
         sessionStorage.setItem("authtoken", true.toString());

@@ -2,13 +2,9 @@ import { toast } from "react-toastify";
 import { StoresType } from "../../types/AppTypes";
 
 export const getStoresFromDB = async () => {
-  const response = await fetch(`http://localhost:3004/stores`);
-  if (!response.ok) {
-    toast.error("Error fetching stores");
-    return false;
-  }
-  const stores = await response.json();
-  return stores;
+  return await fetch(`http://localhost:3004/stores`).then((response) =>
+    response.json()
+  );
 };
 
 export const getStoresByUserId = async (userId: string) => {

@@ -2,13 +2,9 @@ import { toast } from "react-toastify";
 import { UserType } from "../../types/AuthTypes";
 
 export const getUsersFromDB = async () => {
-  const response = await fetch("http://localhost:3004/users");
-  if (!response.ok) {
-    toast.error("Error fetching users");
-    return false;
-  }
-  const users = await response.json();
-  return users;
+  return await fetch("http://localhost:3004/users").then((response) =>
+    response.json()
+  );
 };
 
 export const getUserByEmail = async (email: string) => {

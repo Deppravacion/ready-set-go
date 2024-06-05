@@ -4,6 +4,7 @@ import { useAppProvider } from "../providers/AppContext";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getItemsByStoreId } from "../api/items/api-items";
+import { ThemeToggler } from "../theme/ThemeToggler";
 
 type StoreCardProps = {
   store: StoresType;
@@ -16,7 +17,6 @@ const StoreCard: React.FC<StoreCardProps> = ({ store }) => {
 
   useEffect(() => {
     getItemsByStoreId(store.id).then((storeItems: ItemsType[]) => {
-      // console.log(storeItems);
       setItems(storeItems);
     });
   }, [stores]);
@@ -36,14 +36,10 @@ const StoreCard: React.FC<StoreCardProps> = ({ store }) => {
             );
           })}
       </div>
-
-      {/* <h2>hello world</h2> */}
       <button
         className='btn rounded-none bg-info text-info-conent'
         onClick={() => navigate(`/details/${store.id}`)}
-        // onClick={() => navigate(`/testroute/${store.id}`)}
       >
-        {/* <button className='btn rounded-none' onClick={() => navigate("/details")}> */}
         expand
       </button>
     </div>
@@ -69,7 +65,6 @@ export const Home = () => {
 
   useEffect(() => {
     if (user) {
-      // console.log(user.id);
       handleGetUserStores(user.id);
     }
   }, [user]);
@@ -112,6 +107,7 @@ export const Home = () => {
             New
           </button>
         </div>
+        <ThemeToggler />
       </div>
     </>
   );

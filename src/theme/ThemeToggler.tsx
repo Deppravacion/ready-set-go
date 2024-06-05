@@ -6,12 +6,13 @@ export const ThemeToggler = () => {
     userTheme === "business"
       ? setUserTheme("winter")
       : setUserTheme("business");
+    console.log(userTheme);
   };
   return (
     <>
       <input
         type='checkbox'
-        className='toggle toggle-info'
+        className='toggle toggle-info toggle-xs'
         checked={userTheme === "winter"}
         onChange={themeToggler}
       />

@@ -9,14 +9,7 @@ export const getStoresFromDB = async () => {
 
 export const getStoresByUserId = async (userId: string) => {
   const stores = await getStoresFromDB();
-  const userStores = stores.filter(
-    (store: StoresType) => store.userId === userId
-  );
-
-  if (!userStores) {
-    return false;
-  }
-  return userStores;
+  return stores.filter((store: StoresType) => store.userId === userId);
 };
 
 export const createStore = async (store: StoresType) => {
@@ -35,12 +28,7 @@ export const createStore = async (store: StoresType) => {
 };
 
 export const deleteStore = async (id: string) => {
-  const response = await fetch(`http://localhost:3004/stores/${id}`, {
+  return await fetch(`http://localhost:3004/stores/${id}`, {
     method: "DELETE",
   });
-  if (!response.ok) {
-    toast.error("Error deleting store");
-    return false;
-  }
-  return true;
 };

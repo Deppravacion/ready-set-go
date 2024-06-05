@@ -2,13 +2,6 @@ import { toast } from "react-toastify";
 import { ItemsType } from "../../types/AppTypes";
 
 export const getItemsFromDB = async () => {
-  // const response = await fetch(`http://localhost:3004/items`);
-  // if (!response.ok) {
-  //   toast.error("Error fetching items");
-  //   return false;
-  // }
-  // const items = await response.json();
-  // return items;
   return await fetch(`http://localhost:3004/items`).then((response) =>
     response.json()
   );
@@ -89,12 +82,4 @@ export const deleteItem = async (id: string) => {
   return await fetch(`http://localhost:3004/items/${id}`, {
     method: "DELETE",
   });
-  // const response = await fetch(`http://localhost:3004/items/${id}`, {
-  //   method: "DELETE",
-  // });
-  // if (!response.ok) {
-  //   toast.error("Error deleting item");
-  //   return false;
-  // }
-  // return true;
 };

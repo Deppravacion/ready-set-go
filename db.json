@@ -11,18 +11,6 @@
       "name": "Tester",
       "email": "test@test.com",
       "password": "pass"
-    },
-    {
-      "id": "3",
-      "email": "hgf@gf.com",
-      "name": "linda",
-      "password": "pass"
-    },
-    {
-      "id": "4",
-      "email": "jhg@h.com",
-      "name": "kjh",
-      "password": "1"
     }
   ],
   "stores": [
@@ -35,11 +23,6 @@
       "id": "02",
       "name": "lx470",
       "userId": "01"
-    },
-    {
-      "id": "0.5661614117424603",
-      "name": "freezer",
-      "userId": "01"
     }
   ],
   "items": [
@@ -48,7 +31,7 @@
       "name": "shovel",
       "image": "https://plus.unsplash.com/premium_photo-1680658496041-f7575066cec2?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "description": "short shovel",
-      "quantity": 2,
+      "quantity": "1",
       "minQuantity": "1",
       "storeId": "02"
     },
@@ -57,7 +40,7 @@
       "name": "recoveryGear",
       "image": "https://media.istockphoto.com/id/2101625741/photo/fastenings-for-transporting-goods-straps-steel-shackles-and-ratchet-locks.webp?b=1&s=170667a&w=0&k=20&c=w2DTHxBsWkUjQWtUivHmuNzDgtmPAqQBIhuY5vZFdm0=",
       "description": "straps, shackles, etc",
-      "quantity": 8,
+      "quantity": "1",
       "minQuantity": "1",
       "storeId": "02"
     },
@@ -73,12 +56,12 @@
   ],
   "favorites": [
     {
-      "itemId": "02",
-      "id": "a0b5"
+      "itemId": "01",
+      "id": "28ab"
     },
     {
-      "id": "0.02977903371481494",
-      "itemId": "01"
+      "itemId": "02",
+      "id": "a0b5"
     }
   ]
 }

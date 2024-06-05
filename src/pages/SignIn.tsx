@@ -27,7 +27,6 @@ export const SignIn = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log("submitted");
-    // handleLogin({ email: emailInput, password: passwordInput });
     handleAuthRoute();
   };
   return (

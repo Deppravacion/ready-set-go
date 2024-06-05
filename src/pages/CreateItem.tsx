@@ -19,7 +19,7 @@ const blankItem: ItemsType = {
 //inprogress
 export const CreateItem = () => {
   const navigate = useNavigate();
-  const { handleCreateItem } = useAppProvider();
+  const { handleCreateItem, userTheme } = useAppProvider();
   const { handleLogout } = useAuthProvider();
   const [item, setItem] = useState<ItemsType>(blankItem);
   const { storeId } = useParams();
@@ -37,7 +37,10 @@ export const CreateItem = () => {
 
   return (
     <>
-      <div className='card w-96 bg-base-100 shadow-xl m-auto'>
+      <div
+        data-theme={userTheme}
+        className='card w-96 bg-base-100 shadow-xl m-auto'
+      >
         <div className='container mx-auto p-10 bg-cyan-600 rounded-md'>
           <h2 className='text-lg'>{title}</h2>
           <h2 className='text-md'>{subTitle}</h2>

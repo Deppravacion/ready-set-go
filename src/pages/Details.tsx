@@ -103,7 +103,7 @@ const ItemsInterface: React.FC<CardProps> = ({ item, fetchItems }) => {
 export const Details = () => {
   const navigate = useNavigate();
   const { handleLogout } = useAuthProvider();
-  const { stores } = useAppProvider();
+  const { stores, userTheme } = useAppProvider();
   const { storeId } = useParams();
   const [storeItems, setStoreItems] = useState<ItemsType[]>();
   const [favoriteItems, setFavoriteItems] = useState<FavoritesType[]>();
@@ -125,7 +125,10 @@ export const Details = () => {
 
   return (
     <>
-      <div className='card w-96 bg-base-100 shadow-xl m-auto'>
+      <div
+        data-theme={userTheme}
+        className='card w-96 bg-base-100 shadow-xl m-auto'
+      >
         <div className='container mx-auto p-10 bg-accent rounded-md'>
           <h2 className='text-lg'>{storeName}</h2>
           <h2 className='text-md'>{`${subTitle} for the store: ${storeId}`}</h2>

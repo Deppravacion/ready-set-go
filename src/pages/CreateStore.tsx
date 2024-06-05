@@ -9,7 +9,7 @@ const subTitle: string = " Create a Store!";
 export const CreateStore = () => {
   const { user, handleLogout } = useAuthProvider();
   const navigate = useNavigate();
-  const { handleAddStore } = useAppProvider();
+  const { handleAddStore, userTheme } = useAppProvider();
 
   const [name, setName] = useState<string>("");
 
@@ -29,7 +29,10 @@ export const CreateStore = () => {
 
   return (
     <>
-      <div className='card w-96 bg-base-100 shadow-xl m-auto'>
+      <div
+        data-theme={userTheme}
+        className='card w-96 bg-base-100 shadow-xl m-auto'
+      >
         <div className='container mx-auto p-10 bg-cyan-600 rounded-md'>
           <h2 className='text-lg'>{title}</h2>
           <h2 className='text-md'>{subTitle}</h2>
@@ -76,9 +79,9 @@ export const CreateStore = () => {
           </button>
           <button
             className='btn btn-outline rounded-none btn-success'
-            onClick={() => navigate("/home")}
+            onClick={() => navigate(-1)}
           >
-            Home
+            Back
           </button>
         </div>
       </div>

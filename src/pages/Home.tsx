@@ -12,17 +12,17 @@ type StoreCardProps = {
 
 const StoreCard: React.FC<StoreCardProps> = ({ store }) => {
   const [items, setItems] = useState<ItemsType[] | null>(null);
-  const { stores } = useAppProvider();
+  const { stores, userTheme } = useAppProvider();
   const navigate = useNavigate();
 
   useEffect(() => {
     getItemsByStoreId(store.id).then((storeItems: ItemsType[]) => {
       setItems(storeItems);
     });
-  }, [stores]);
+  }, [stores, userTheme]);
 
   return (
-    <div className='card shadow-sm bg-neutral '>
+    <div data-theme={userTheme} className='card shadow-sm bg-neutral '>
       <div className='container mx-auto p-1 bg-base-300 rounded-none'>
         <h2 className='text-lg'>{store.name}</h2>
       </div>
@@ -56,7 +56,7 @@ const defaultStoreCardData = {
 
 export const Home = () => {
   const { handleLogout, user } = useAuthProvider();
-  const { handleGetUserStores } = useAppProvider();
+  const { handleGetUserStores, userTheme } = useAppProvider();
   const { stores } = useAppProvider();
   const name = user?.name;
   const subTitle: string = `Welcome ${name} to your home page!`;
@@ -71,7 +71,10 @@ export const Home = () => {
 
   return (
     <>
-      <div className='card w-96 bg-base-100 shadow-xl m-auto'>
+      <div
+        data-theme={userTheme}
+        className='card w-96 bg-base-100 shadow-xl m-auto'
+      >
         <div className='container mx-auto p-10 bg-base-300 rounded-md mb-2'>
           <h2 className='text-lg'>{title}</h2>
           <h2 className='text-md'>{subTitle}</h2>

@@ -3,6 +3,7 @@ import { useAuthProvider } from "../providers/AuthContext";
 import { useNavigate } from "react-router-dom";
 import profileImage from "../assets/guyprofile.jpg";
 import { useAppProvider } from "../providers/AppContext";
+import { ThemeToggler } from "../theme/ThemeToggler";
 
 export const SignIn = () => {
   const { handleLogin } = useAuthProvider();
@@ -87,6 +88,7 @@ export const SignIn = () => {
                 </button>
               </div>
             </form>
+            <ThemeToggler />
           </div>
         </div>
       </div>

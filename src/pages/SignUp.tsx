@@ -2,6 +2,8 @@ import { useAuthProvider } from "../providers/AuthContext";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import profileImage from "../assets/girlprofile.jpg";
+import { useAppProvider } from "../providers/AppContext";
+import { ThemeToggler } from "../theme/ThemeToggler";
 
 export const SignUp = () => {
   const [emailInput, setEmailInput] = useState<string>("");
@@ -9,6 +11,7 @@ export const SignUp = () => {
   const [passwordInput, setPasswordInput] = useState<string>("");
   const [confirmPasswordInput, setConfirmPasswordInput] = useState<string>("");
   const { handleSignUp } = useAuthProvider();
+  const { userTheme } = useAppProvider();
   const navigate = useNavigate();
 
   const goToSignIn = () => {
@@ -28,7 +31,7 @@ export const SignUp = () => {
   };
 
   return (
-    <div className='hero min-h-screen'>
+    <div data-theme={userTheme} className='hero min-h-screen'>
       <div className='hero-content flex-col lg:flex-row-reverse'>
         <div className='text-center lg:text-left'>
           <h1 className='text-5xl font-bold'>Sign Up Now!</h1>
@@ -112,6 +115,7 @@ export const SignUp = () => {
               </button>
             </div>
           </form>
+          <ThemeToggler />
         </div>
       </div>
     </div>

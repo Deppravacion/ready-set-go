@@ -14,7 +14,6 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
       setUser(JSON.parse(user));
       sessionStorage.setItem("authtoken", "true");
     }
-    console.log("user from AUTHContenxt:", user);
   }, []);
 
   const handleLogin = async ({

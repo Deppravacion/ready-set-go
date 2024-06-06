@@ -102,7 +102,6 @@ export const Home = () => {
           >
             Home
           </button>
-          {/* Open the modal using document.getElementById('ID').showModal() method */}
           <button
             className='btn btn-outline rounded-none btn-secondary'
             onClick={() => navigate(`/createstore`)}

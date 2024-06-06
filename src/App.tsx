@@ -12,7 +12,6 @@ import { SignUp } from "./pages/SignUp";
 import { HowItWorks } from "./pages/HowItWorks";
 import { AuthProvider } from "./providers/AuthContext";
 import { AppProvider } from "./providers/AppContext";
-import { TestingRoute } from "./pages/TestingRoute";
 import { CreateItem } from "./pages/CreateItem";
 
 function App() {
@@ -27,7 +26,6 @@ function App() {
               <Route path='/details/:storeId' element={<Details />} />
               <Route path='/home' element={<Home />} />
             </Route>
-            <Route path='/testroute/:storeId' element={<TestingRoute />} />
             <Route path='/signin' element={<SignIn />} />
             <Route path='/signup' element={<SignUp />} />
             <Route path='/howitworks' element={<HowItWorks />} />

@@ -87,8 +87,8 @@ export const SignIn = () => {
                   Sign Up
                 </button>
               </div>
+              <ThemeToggler />
             </form>
-            <ThemeToggler />
           </div>
         </div>
       </div>

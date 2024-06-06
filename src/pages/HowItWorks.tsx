@@ -1,3 +1,5 @@
+import { useAppProvider } from "../providers/AppContext";
+
 type CardProps = {
   cardTitle: string;
   cardBody: string;
@@ -15,6 +17,7 @@ const Card: React.FC<CardProps> = ({ cardTitle, cardBody }) => {
 };
 
 export const HowItWorks: React.FC = () => {
+  const { userTheme } = useAppProvider();
   const cardBodyData = [
     {
       cardTitle: "Step 1",
@@ -39,7 +42,7 @@ export const HowItWorks: React.FC = () => {
 
   return (
     <>
-      <div className='card w-96 bg-base-100 shadow-xl'>
+      <div data-theme={userTheme} className='card w-96 bg-base-100 shadow-xl'>
         <div className='container mx-auto p-10 bg-accent rounded-md'>
           <h2 className='text-lg'>{title}</h2>
         </div>
@@ -54,21 +57,7 @@ export const HowItWorks: React.FC = () => {
             );
           })}
         </div>
-        <button className='btn btn-outline btn-success'>Next</button>
       </div>
-
-      {/* <BasicLayout
-        title={title}
-        body={cardBodyData.map((card, index) => {
-          return (
-            <Card
-              key={index}
-              cardTitle={card.cardTitle}
-              cardBody={card.cardBody}
-            />
-          );
-        })}
-      /> */}
     </>
   );
 };

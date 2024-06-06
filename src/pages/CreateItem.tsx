@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, FormEvent, ChangeEvent } from "react";
 import { useAppProvider } from "../providers/AppContext";
 import { useAuthProvider } from "../providers/AuthContext";
 import { useNavigate, useParams } from "react-router-dom";
@@ -25,7 +25,7 @@ export const CreateItem = () => {
   const { storeId } = useParams();
 
   const handleSubmit = async (
-    e: React.FormEvent<HTMLFormElement>,
+    e: FormEvent<HTMLFormElement>,
     { item, storeId }: { item: ItemsType; storeId: string }
   ) => {
     e.preventDefault();
@@ -49,7 +49,7 @@ export const CreateItem = () => {
           {/* ******** */}
           <form
             className='card-body'
-            onSubmit={(e: React.FormEvent<HTMLFormElement>) =>
+            onSubmit={(e: FormEvent<HTMLFormElement>) =>
               handleSubmit(e, { item, storeId: storeId ?? "" })
             }
           >
@@ -62,7 +62,7 @@ export const CreateItem = () => {
                   type='text'
                   placeholder='name'
                   className='input input-bordered max-w-full'
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
                     setItem({ ...item, name: e.target.value })
                   }
                   required
@@ -73,7 +73,7 @@ export const CreateItem = () => {
                   type='text'
                   placeholder='image'
                   className='input input-bordered max-w-full'
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
                     setItem({ ...item, image: e.target.value })
                   }
                   required
@@ -84,7 +84,7 @@ export const CreateItem = () => {
                   type='text'
                   placeholder='description'
                   className='input input-bordered max-w-full'
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
                     setItem({ ...item, description: e.target.value })
                   }
                   required
@@ -95,7 +95,7 @@ export const CreateItem = () => {
                   type='text'
                   placeholder='quantity'
                   className='input input-bordered max-w-full'
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
                     setItem({ ...item, quantity: e.target.value })
                   }
                   required
@@ -106,7 +106,7 @@ export const CreateItem = () => {
                   type='text'
                   placeholder='minQuantity'
                   className='input input-bordered max-w-full'
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
                     setItem({ ...item, minQuantity: e.target.value })
                   }
                   required

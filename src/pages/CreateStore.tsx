@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, ChangeEvent, FormEvent } from "react";
 import { useAppProvider } from "../providers/AppContext";
 import { useAuthProvider } from "../providers/AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -14,7 +14,7 @@ export const CreateStore = () => {
   const [name, setName] = useState<string>("");
 
   const handleSubmit = async (
-    e: React.FormEvent<HTMLFormElement>,
+    e: FormEvent<HTMLFormElement>,
     { name, userId }: { name: string; userId: string }
   ) => {
     e.preventDefault();
@@ -41,21 +41,17 @@ export const CreateStore = () => {
           {/* ******** */}
           <form
             className='card-body'
-            onSubmit={(e: React.FormEvent<HTMLFormElement>) =>
+            onSubmit={(e: FormEvent<HTMLFormElement>) =>
               handleSubmit(e, { name: name, userId: userId })
             }
           >
             <div className='form-control'>
-              {/* Daisy avatar */}
-
-              {/* Daisy avatar */}
               <label className='label '>
-                {/* <span className='label-text'>Name</span> */}
                 <input
                   type='text'
                   placeholder='name'
                   className='input input-bordered max-w-full'
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
                     setName(e.target.value)
                   }
                   required

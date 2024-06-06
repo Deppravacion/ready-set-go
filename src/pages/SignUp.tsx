@@ -1,5 +1,5 @@
 import { useAuthProvider } from "../providers/AuthContext";
-import { useState } from "react";
+import { useState, ChangeEvent, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import profileImage from "../assets/girlprofile.jpg";
 import { useAppProvider } from "../providers/AppContext";
@@ -18,7 +18,7 @@ export const SignUp = () => {
     navigate("/signin");
   };
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log("submitted");
     await handleSignUp(
@@ -56,7 +56,7 @@ export const SignUp = () => {
                 type='text'
                 placeholder='name'
                 className='input input-bordered'
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
                   setNameInput(e.target.value)
                 }
                 required
@@ -68,7 +68,7 @@ export const SignUp = () => {
                 type='email'
                 placeholder='email'
                 className='input input-bordered'
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
                   setEmailInput(e.target.value)
                 }
                 required
@@ -82,7 +82,7 @@ export const SignUp = () => {
                 type='password'
                 placeholder='password'
                 className='input input-bordered'
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
                   setPasswordInput(e.target.value)
                 }
                 required
@@ -96,7 +96,7 @@ export const SignUp = () => {
                 type='password'
                 placeholder='confirm password'
                 className='input input-bordered'
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
                   setConfirmPasswordInput(e.target.value)
                 }
                 required

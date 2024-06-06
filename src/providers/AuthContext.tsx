@@ -61,14 +61,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
         throw new Error("Passwords do not match");
       }
 
-      type NewUserType = {
-        email: string;
-        name: string;
-        id: string;
-        password: string;
-      };
-
-      const newUser: NewUserType = {
+      const newUser: UserType = {
         email,
         name,
         id: (data.length + 1).toString(),
@@ -96,7 +89,6 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   };
 
   const handleLogout = () => {
-    console.log("logging out");
     setUser(null);
     sessionStorage.removeItem("user");
     sessionStorage.removeItem("authtoken");

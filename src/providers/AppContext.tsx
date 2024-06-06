@@ -91,10 +91,6 @@ export const AppProvider = ({ children }: { children: JSX.Element }) => {
         handleDeleteItem,
         userTheme,
         setUserTheme,
-        // items,
-        // setItems,
-        // favorites,
-        // setFavorites,+
       }}
     >
       {children}

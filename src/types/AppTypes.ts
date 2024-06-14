@@ -25,9 +25,10 @@ export type ItemsType = {
   quantity: string;
   minQuantity: string;
   storeId: string;
+  isFavorite: boolean;
 };
 
 export type FavoritesType = {
   itemId: string;
-  id: string;
+  id?: string;
 };

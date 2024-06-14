@@ -15,6 +15,7 @@ const blankItem: ItemsType = {
   quantity: "",
   minQuantity: "",
   storeId: "",
+  isFavorite: false,
 };
 //inprogress
 export const CreateItem = () => {

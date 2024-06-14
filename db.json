@@ -23,6 +23,11 @@
       "id": "02",
       "name": "lx470",
       "userId": "01"
+    },
+    {
+      "id": "0.9348163071272975",
+      "name": "test storage 1",
+      "userId": "01"
     }
   ],
   "items": [
@@ -52,16 +57,30 @@
       "quantity": "99",
       "minQuantity": "18",
       "storeId": "01"
+    },
+    {
+      "id": "0.30420201276844283",
+      "name": "first item",
+      "image": "https://picsum.photos/id/237/200/300",
+      "description": "asdfasdfas",
+      "quantity": "44",
+      "minQuantity": "1",
+      "storeId": "0.9348163071272975"
+    },
+    {
+      "id": "0.30420201276844283",
+      "name": "second item",
+      "image": "https://picsum.photos/seed/picsum/200/300",
+      "description": "some image",
+      "quantity": "77",
+      "minQuantity": "34",
+      "storeId": "0.9348163071272975"
     }
   ],
   "favorites": [
     {
       "itemId": "01",
       "id": "28ab"
-    },
-    {
-      "itemId": "02",
-      "id": "a0b5"
     }
   ]
 }

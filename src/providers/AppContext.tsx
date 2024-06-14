@@ -22,7 +22,7 @@ export const AppProvider = ({ children }: { children: JSX.Element }) => {
       userId,
     };
     try {
-      createStore(newStore);
+      return createStore(newStore);
     } catch (error) {
       console.error(error);
       toast.error("Error creating store");
@@ -31,12 +31,12 @@ export const AppProvider = ({ children }: { children: JSX.Element }) => {
 
   const handleCreateItem = async (item: ItemsType, storeId: string) => {
     const items = await getItemsByStoreId(storeId);
-    for (let i = 0; i < items.length; i++) {
-      if (items[i].name.toLowerCase() === item.name.toLowerCase()) {
-        toast.error("Item already exists");
-        return;
-      }
-    }
+    if (
+      items.some(
+        (elm: ItemsType) => elm.name.toLowerCase() === item.name.toLowerCase()
+      )
+    )
+      toast.error("Item already exists");
     try {
       const newItem = {
         id: item.id,
@@ -48,7 +48,7 @@ export const AppProvider = ({ children }: { children: JSX.Element }) => {
         storeId: storeId,
         isFavorite: false,
       };
-      await createItem(newItem);
+      return await createItem(newItem);
     } catch (error) {
       console.error(error);
       toast.error("Error creating item");
@@ -66,7 +66,7 @@ export const AppProvider = ({ children }: { children: JSX.Element }) => {
 
   const handleGetUserStores = async (userId: string) => {
     try {
-      await getStoresByUserId(userId).then((userStores) => {
+      return await getStoresByUserId(userId).then((userStores) => {
         setStores(userStores);
       });
     } catch (error) {
@@ -76,9 +76,9 @@ export const AppProvider = ({ children }: { children: JSX.Element }) => {
   };
 
   useEffect(() => {
-    if (user) {
-      handleGetUserStores(user.id);
-    }
+    if (!user) return;
+    if (!user.id) return;
+    handleGetUserStores(user.id);
   }, [user]);
 
   return (

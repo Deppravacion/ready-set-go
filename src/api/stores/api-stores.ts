@@ -1,4 +1,3 @@
-import { toast } from "react-toastify";
 import { StoresType } from "../../types/AppTypes";
 
 export const getStoresFromDB = async () => {
@@ -21,10 +20,9 @@ export const createStore = async (store: StoresType) => {
     body: JSON.stringify(store),
   });
   if (!response.ok) {
-    toast.error("Error creating store");
-    return false;
+    throw new Error("Error creating store");
   }
-  return true;
+  return response.json();
 };
 
 export const deleteStore = async (id: string) => {

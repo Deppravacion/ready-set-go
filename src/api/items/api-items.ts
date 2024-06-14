@@ -20,9 +20,9 @@ export const getItemsByStoreId = async (storeId: string) => {
   }
 };
 
-export const getItemById = async (storeId: string, itemId: string) => {
+export const getItemById = async (itemId: string) => {
   try {
-    const items = await getItemsByStoreId(storeId);
+    const items = await getItemsFromDB();
     return items.filter((item: ItemsType) => item.id === itemId);
   } catch (error) {
     console.error(error);
@@ -40,9 +40,9 @@ export const createItem = async (item: ItemsType) => {
   });
 };
 
-export const increaseItemQuantity = async (storeId: string, itemId: string) => {
+export const increaseItemQuantity = async (itemId: string) => {
   try {
-    const item = await getItemById(storeId, itemId);
+    const item = await getItemById(itemId);
     const newQuantity = Number(item[0].quantity) + 1;
     return await fetch(`http://localhost:3004/items/${itemId}`, {
       method: "PATCH",
@@ -57,9 +57,9 @@ export const increaseItemQuantity = async (storeId: string, itemId: string) => {
   }
 };
 
-export const decreaseItemQuantity = async (storeId: string, itemId: string) => {
+export const decreaseItemQuantity = async (itemId: string) => {
   try {
-    const item = await getItemById(storeId, itemId);
+    const item = await getItemById(itemId);
     const newQuantity = Number(item[0].quantity) - 1;
     if (newQuantity >= 0) {
       return await fetch(`http://localhost:3004/items/${itemId}`, {

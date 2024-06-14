@@ -10,7 +10,7 @@ export type AppContextTypes = {
 };
 
 export type StoresType = {
-  id: string;
+  id?: string;
   name: string;
   userId: string;
   items?: ItemsType[];
@@ -18,7 +18,7 @@ export type StoresType = {
 };
 
 export type ItemsType = {
-  id: string;
+  id?: string;
   name: string;
   image: string;
   description: string;

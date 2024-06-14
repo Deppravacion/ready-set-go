@@ -1,7 +1,11 @@
 import { createContext, useState, useContext, useEffect } from "react";
 import { toast } from "react-toastify";
 import { UserType, AuthTypes } from "../types/AuthTypes";
-import { createUser, getUsersFromDB } from "../api/users/api-users";
+import {
+  createUser,
+  getUserByEmail,
+  getUsersFromDB,
+} from "../api/users/api-users";
 
 export const AuthContext = createContext({} as AuthTypes);
 
@@ -24,22 +28,14 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     password: string;
   }) => {
     try {
-      // const response = await fetch("http://localhost:3004/users");
-      // if (!response.ok) {
-      //   throw new Error("Error fetching users");
-      // }
-      // const data = await response.json();
       const data = await getUsersFromDB();
       const user = data.find(
         (user: UserType) => user.email === email && user.password === password
       );
-      if (user) {
-        sessionStorage.setItem("user", JSON.stringify(user));
-        sessionStorage.setItem("authtoken", true.toString());
-        setUser(user);
-      } else {
-        toast.error("Invalid credentials");
-      }
+      if (!user) toast.error("Invalid email or password");
+      sessionStorage.setItem("user", JSON.stringify(user));
+      sessionStorage.setItem("authtoken", true.toString());
+      setUser(user);
     } catch (error: unknown) {
       console.error(error);
       toast.error("Error logging in");
@@ -52,42 +48,35 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     password: string,
     confirmPassword: string
   ) => {
+    if (password !== confirmPassword) {
+      toast.error("Passwords do not match");
+      throw new Error("Passwords do not match");
+    }
+
+    const queryUser = await getUserByEmail(email);
+    if (queryUser) {
+      toast.error("User already exists");
+      throw new Error("User already exists");
+    }
+
+    const newUser: UserType = {
+      email,
+      name,
+      password,
+    };
+
     try {
-      const data = await getUsersFromDB();
-      if (data.find((user: UserType) => user.email === email)) {
-        toast.error("User already exists");
-        throw new Error("User already exists");
-      }
-
-      if (password !== confirmPassword) {
-        toast.error("Passwords do not match");
-        throw new Error("Passwords do not match");
-      }
-
-      const newUser: UserType = {
-        email,
-        name,
-        // id: (data.length + 1).toString(),
-        password,
-      };
-
-      try {
-        await createUser(newUser);
-        setUser({
-          email: newUser.email,
-          name: newUser.name,
-          id: newUser.id,
-        });
-        sessionStorage.setItem("user", JSON.stringify(newUser));
-        sessionStorage.setItem("authtoken", "true");
-        toast.success("User created successfully");
-      } catch (error: unknown) {
-        console.error(error);
-        toast.error("Error creating user");
-      }
+      await createUser(newUser);
+      setUser({
+        email: newUser.email,
+        name: newUser.name,
+      });
+      sessionStorage.setItem("user", JSON.stringify(newUser));
+      sessionStorage.setItem("authtoken", "true");
+      toast.success("User created successfully");
     } catch (error: unknown) {
       console.error(error);
-      toast.error("Error signing up");
+      toast.error("Error creating user");
     }
   };
 

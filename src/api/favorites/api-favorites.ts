@@ -46,11 +46,11 @@ export const toggleFavorite = async (itemId: string) => {
     if (favorites.length === 0) {
       const newFavorite = {
         itemId,
-        id: Math.random().toString(),
+        // id: Math.random().toString(),
       };
-      await createFavorite(newFavorite);
+      return await createFavorite(newFavorite);
     } else {
-      await deleteFavoriteById(favorites[0].id);
+      return await deleteFavoriteById(favorites[0].id);
     }
   } catch (error) {
     console.error(error);

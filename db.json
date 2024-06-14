@@ -11,6 +11,12 @@
       "name": "Tester",
       "email": "test@test.com",
       "password": "pass"
+    },
+    {
+      "id": "8f4f",
+      "email": "8as@9898.com",
+      "name": "another",
+      "password": "ll"
     }
   ],
   "stores": [

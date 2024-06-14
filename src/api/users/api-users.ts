@@ -8,11 +8,11 @@ export const getUsersFromDB = async () => {
 };
 
 export const getUserByEmail = async (email: string) => {
-  const users = await getUsersFromDB();
-  if (!users) {
-    return false;
-  }
-  const user = users.find((user: any) => user.email === email);
+  const userEmail = email;
+  const tail = `?email=${userEmail}`;
+  const user = fetch(`http://localhost:3004/users${tail}`).then((response) =>
+    response.json()
+  );
   return user;
 };
 

@@ -8,14 +8,17 @@ import { ThemeToggler } from "../theme/ThemeToggler";
 export const SignIn = () => {
   const { handleLogin } = useAuthProvider();
   const { userTheme } = useAppProvider();
-  const [emailInput, setEmailInput] = useState<string>("");
-  const [passwordInput, setPasswordInput] = useState<string>("");
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+
   const navigate = useNavigate();
 
   const handleAuthRoute = async () => {
     await handleLogin({
-      email: emailInput,
-      password: passwordInput,
+      email: user.email,
+      password: user.password,
     });
 
     navigate("/home");
@@ -30,6 +33,8 @@ export const SignIn = () => {
     console.log("submitted");
     handleAuthRoute();
   };
+
+  const fields = [{ name: "email" }, { name: "password" }];
   return (
     <>
       <div data-theme={userTheme} className='hero min-h-screen '>
@@ -48,33 +53,24 @@ export const SignIn = () => {
                     <img src={profileImage} />
                   </div>
                 </div>
-                <label className='label'>
-                  <span className='label-text'>Email</span>
-                </label>
-                <input
-                  type='email'
-                  placeholder='email'
-                  className='input input-bordered'
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                    setEmailInput(e.target.value)
-                  }
-                  required
-                />
+                {fields.map((field) => (
+                  <>
+                    <label className='label'>
+                      <span className='label-text'>{field.name}</span>
+                    </label>
+                    <input
+                      type='email'
+                      placeholder='email'
+                      className='input input-bordered'
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                        setUser({ ...user, [field.name]: e.target.value })
+                      }
+                      required
+                    />
+                  </>
+                ))}
               </div>
-              <div className='form-control'>
-                <label className='label'>
-                  <span className='label-text'>Password</span>
-                </label>
-                <input
-                  type='password'
-                  placeholder='password'
-                  className='input input-bordered'
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                    setPasswordInput(e.target.value);
-                  }}
-                  required
-                />
-              </div>
+
               <div className='form-control mt-6 flex gap-1'>
                 <button type='submit' className='btn btn-info'>
                   Login

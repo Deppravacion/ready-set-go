@@ -24,11 +24,12 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     password: string;
   }) => {
     try {
-      const response = await fetch("http://localhost:3004/users");
-      if (!response.ok) {
-        throw new Error("Error fetching users");
-      }
-      const data = await response.json();
+      // const response = await fetch("http://localhost:3004/users");
+      // if (!response.ok) {
+      //   throw new Error("Error fetching users");
+      // }
+      // const data = await response.json();
+      const data = await getUsersFromDB();
       const user = data.find(
         (user: UserType) => user.email === email && user.password === password
       );
@@ -36,6 +37,8 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
         sessionStorage.setItem("user", JSON.stringify(user));
         sessionStorage.setItem("authtoken", true.toString());
         setUser(user);
+      } else {
+        toast.error("Invalid credentials");
       }
     } catch (error: unknown) {
       console.error(error);
@@ -64,7 +67,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
       const newUser: UserType = {
         email,
         name,
-        id: (data.length + 1).toString(),
+        // id: (data.length + 1).toString(),
         password,
       };
 

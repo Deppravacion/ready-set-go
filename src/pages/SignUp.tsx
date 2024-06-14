@@ -6,11 +6,20 @@ import { useAppProvider } from "../providers/AppContext";
 import { ThemeToggler } from "../theme/ThemeToggler";
 import { HowItWorks } from "./HowItWorks";
 
+type SignUpProps = {
+  name: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+};
+
 export const SignUp = () => {
-  const [emailInput, setEmailInput] = useState<string>("");
-  const [nameInput, setNameInput] = useState<string>("");
-  const [passwordInput, setPasswordInput] = useState<string>("");
-  const [confirmPasswordInput, setConfirmPasswordInput] = useState<string>("");
+  const [newUser, setNewUser] = useState<SignUpProps>({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
   const { handleSignUp } = useAuthProvider();
   const { userTheme } = useAppProvider();
   const navigate = useNavigate();
@@ -23,13 +32,20 @@ export const SignUp = () => {
     event.preventDefault();
     console.log("submitted");
     await handleSignUp(
-      nameInput,
-      emailInput,
-      passwordInput,
-      confirmPasswordInput
+      newUser.name,
+      newUser.email,
+      newUser.password,
+      newUser.confirmPassword
     );
     navigate("/home");
   };
+
+  const fields = [
+    { name: "name" },
+    { name: "email" },
+    { name: "password" },
+    { name: "confirm password" },
+  ];
 
   return (
     <div data-theme={userTheme} className='hero min-h-screen'>
@@ -50,58 +66,22 @@ export const SignUp = () => {
                 </div>
               </div>
               {/* Daisy avatar */}
-              <label className='label'>
-                <span className='label-text'>Name</span>
-              </label>
-              <input
-                type='text'
-                placeholder='name'
-                className='input input-bordered'
-                onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                  setNameInput(e.target.value)
-                }
-                required
-              />
-              <label className='label'>
-                <span className='label-text'>Email</span>
-              </label>
-              <input
-                type='email'
-                placeholder='email'
-                className='input input-bordered'
-                onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                  setEmailInput(e.target.value)
-                }
-                required
-              />
-            </div>
-            <div className='form-control'>
-              <label className='label'>
-                <span className='label-text'>Password</span>
-              </label>
-              <input
-                type='password'
-                placeholder='password'
-                className='input input-bordered'
-                onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                  setPasswordInput(e.target.value)
-                }
-                required
-              />
-            </div>
-            <div className='form-control'>
-              <label className='label'>
-                <span className='label-text'>Confirm Password</span>
-              </label>
-              <input
-                type='password'
-                placeholder='confirm password'
-                className='input input-bordered'
-                onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                  setConfirmPasswordInput(e.target.value)
-                }
-                required
-              />
+              {fields.map((field) => (
+                <>
+                  <label className='label'>
+                    <span className='label-text'>{field.name}</span>
+                  </label>
+                  <input
+                    type='text'
+                    placeholder={field.name}
+                    className='input input-bordered'
+                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                      setNewUser({ ...newUser, [field.name]: e.target.value })
+                    }
+                    required
+                  />
+                </>
+              ))}
             </div>
             <div className='form-control mt-6 flex gap-1'>
               <button type='submit' className='btn btn-info'>

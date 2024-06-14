@@ -36,6 +36,14 @@ export const CreateItem = () => {
     navigate("/home");
   };
 
+  const fields = [
+    { name: "name" },
+    { name: "image" },
+    { name: "description" },
+    { name: "quantity" },
+    { name: "minQuantity" },
+  ];
+
   return (
     <>
       <div
@@ -55,64 +63,21 @@ export const CreateItem = () => {
             }
           >
             <div className='form-control'>
-              {/* Daisy avatar */}
-
-              {/* Daisy avatar */}
-              <label className='label '>
-                <input
-                  type='text'
-                  placeholder='name'
-                  className='input input-bordered max-w-full'
-                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                    setItem({ ...item, name: e.target.value })
-                  }
-                  required
-                />
-              </label>
-              <label className='label '>
-                <input
-                  type='text'
-                  placeholder='image'
-                  className='input input-bordered max-w-full'
-                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                    setItem({ ...item, image: e.target.value })
-                  }
-                  required
-                />
-              </label>
-              <label className='label '>
-                <input
-                  type='text'
-                  placeholder='description'
-                  className='input input-bordered max-w-full'
-                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                    setItem({ ...item, description: e.target.value })
-                  }
-                  required
-                />
-              </label>
-              <label className='label '>
-                <input
-                  type='text'
-                  placeholder='quantity'
-                  className='input input-bordered max-w-full'
-                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                    setItem({ ...item, quantity: e.target.value })
-                  }
-                  required
-                />
-              </label>
-              <label className='label '>
-                <input
-                  type='text'
-                  placeholder='minQuantity'
-                  className='input input-bordered max-w-full'
-                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                    setItem({ ...item, minQuantity: e.target.value })
-                  }
-                  required
-                />
-              </label>
+              {fields.map((field) => {
+                return (
+                  <label className='label ' key={field.name}>
+                    <input
+                      type='text'
+                      placeholder={field.name}
+                      className='input input-bordered max-w-full'
+                      onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                        setItem({ ...item, [field.name]: e.target.value })
+                      }
+                      required
+                    />
+                  </label>
+                );
+              })}
               <div className='form-control mt-6'>
                 <button className='btn btn-primary'>Next</button>
               </div>

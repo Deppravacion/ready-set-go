@@ -16,13 +16,15 @@ const StoreCard: React.FC<StoreCardProps> = ({ store }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (!store) return;
+    if (!store.id) return;
     getItemsByStoreId(store.id).then((storeItems: ItemsType[]) => {
       setItems(storeItems);
     });
   }, [stores, userTheme]);
 
   return (
-    <div data-theme={userTheme} className='card shadow-sm bg-neutral '>
+    <div data-theme={userTheme} className='card shadow-sm bg-neutral p-10'>
       <div className='container mx-auto p-1 bg-base-300 rounded-none'>
         <h2 className='text-lg'>{store.name}</h2>
       </div>
@@ -64,16 +66,16 @@ export const Home = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (user) {
-      handleGetUserStores(user.id);
-    }
+    if (!user) return;
+    if (!user.id) return;
+    handleGetUserStores(user.id);
   }, [user]);
 
   return (
     <>
       <div
         data-theme={userTheme}
-        className='card w-96 bg-base-100 shadow-xl m-auto'
+        className='card w-96 bg-base-100 shadow-xl m-auto p-4'
       >
         <div className='container mx-auto p-10 bg-base-300 rounded-md mb-2'>
           <h2 className='text-lg'>{title}</h2>

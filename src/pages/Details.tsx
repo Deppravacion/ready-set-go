@@ -62,40 +62,44 @@ const CollapseItem: React.FC<CardProps> = ({ item, fetchItems, favorites }) => {
 const ItemsInterface: React.FC<CardProps> = ({ item, fetchItems }) => {
   const { handleDeleteItem } = useAppProvider();
   const deleteItem = () => {
+    if (!item) return;
+    if (!item.id) return;
     handleDeleteItem(item.id);
     fetchItems();
   };
 
   return (
     <>
-      <div className='flex  gap-1 flex-col justify-center text-2xl mb-1'>
-        <button
-          className='btn btn-info flex btn-sm min-w-16 text-2xl items-center'
-          onMouseDown={() => increaseItemQuantity(item.storeId, item.id)}
-        >
-          +
-        </button>
-        <button
-          className='btn  btn-warning btn-sm min-w-16 text-2xl items-center'
-          onMouseDown={() => decreaseItemQuantity(item.storeId, item.id)}
-        >
-          -
-        </button>
-      </div>
-      <div className='flex justify-around'>
-        <button
-          className='btn btn-error btn-sm min-w-16'
-          onMouseDown={() => deleteItem()}
-        >
-          Delete{" "}
-        </button>
-        <button
-          className='btn btn-success btn-sm min-w-16'
-          onMouseDown={() => toggleFavorite(item.id)}
-        >
-          Fav
-        </button>
-      </div>
+      {item && item.id && (
+        <>
+          <div className='flex  gap-1 flex-col justify-center text-2xl mb-1 p-4'>
+            <button
+              className='btn btn-info flex btn-sm min-w-16 text-2xl items-center'
+              onMouseDown={() => increaseItemQuantity(item!.id!)}
+            >
+              +
+            </button>
+            <button
+              className='btn  btn-warning btn-sm min-w-16 text-2xl items-center'
+              onMouseDown={() => decreaseItemQuantity(item!.id!)}
+            ></button>
+          </div>
+          <div className='flex justify-around'>
+            <button
+              className='btn btn-error btn-sm min-w-16'
+              onMouseDown={() => deleteItem()}
+            >
+              Delete{" "}
+            </button>
+            <button
+              className='btn btn-success btn-sm min-w-16'
+              onMouseDown={() => toggleFavorite(item!.id!)}
+            >
+              Fav
+            </button>
+          </div>
+        </>
+      )}
     </>
   );
 };
@@ -111,11 +115,11 @@ export const Details = () => {
 
   const fetchItems = async () => {
     const items = await getItemsByStoreId(storeId ?? "");
-    setStoreItems(items);
+    if (items) setStoreItems(items);
   };
   const fetchFavorites = async () => {
     const favorites = await getFavoritesFromDB();
-    setFavoriteItems(favorites);
+    if (favorites) setFavoriteItems(favorites);
   };
 
   useEffect(() => {
@@ -127,9 +131,9 @@ export const Details = () => {
     <>
       <div
         data-theme={userTheme}
-        className='card w-96 bg-base-100 shadow-xl m-auto'
+        className='card w-96 bg-base-100 shadow-xl m-auto p-4'
       >
-        <div className='container mx-auto p-10 bg-accent rounded-md'>
+        <div className='container mx-auto p-10 bg-accent rounded-md '>
           <h2 className='text-lg'>{storeName}</h2>
           <h2 className='text-md'>{`${subTitle} for the store: ${storeId}`}</h2>
         </div>

@@ -31,7 +31,7 @@ export const CreateStore = () => {
     <>
       <div
         data-theme={userTheme}
-        className='card w-96 bg-base-100 shadow-xl m-auto'
+        className='card w-96 bg-base-100 shadow-xl m-auto p-4'
       >
         <div className='container mx-auto p-10 bg-cyan-600 rounded-md'>
           <h2 className='text-lg'>{title}</h2>

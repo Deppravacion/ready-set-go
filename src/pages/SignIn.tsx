@@ -59,8 +59,8 @@ export const SignIn = () => {
                       <span className='label-text'>{field.name}</span>
                     </label>
                     <input
-                      type='email'
-                      placeholder='email'
+                      type={field.name}
+                      placeholder={field.name}
                       className='input input-bordered'
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                         setUser({ ...user, [field.name]: e.target.value })

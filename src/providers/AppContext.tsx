@@ -46,6 +46,7 @@ export const AppProvider = ({ children }: { children: JSX.Element }) => {
         quantity: item.quantity,
         minQuantity: item.minQuantity,
         storeId: storeId,
+        isFavorite: false,
       };
       await createItem(newItem);
     } catch (error) {

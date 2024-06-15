@@ -41,10 +41,10 @@ export const SignUp = () => {
   };
 
   const fields = [
-    { name: "name" },
-    { name: "email" },
-    { name: "password" },
-    { name: "confirm password" },
+    { name: "name", type: "text" },
+    { name: "email", type: "email" },
+    { name: "password", type: "password" },
+    { name: "confirmPassword", type: "password" },
   ];
 
   return (
@@ -72,7 +72,7 @@ export const SignUp = () => {
                     <span className='label-text'>{field.name}</span>
                   </label>
                   <input
-                    type='text'
+                    type={field.type}
                     placeholder={field.name}
                     className='input input-bordered'
                     onChange={(e: ChangeEvent<HTMLInputElement>) =>

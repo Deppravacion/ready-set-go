@@ -10,8 +10,8 @@ export const getUsersFromDB = async () => {
 export const getUserByEmail = async (email: string) => {
   const userEmail = email;
   const tail = `?email=${userEmail}`;
-  const user = fetch(`http://localhost:3004/users${tail}`).then((response) =>
-    response.json()
+  const user = await fetch(`http://localhost:3004/users${tail}`).then(
+    (response) => response.json()
   );
   return user;
 };

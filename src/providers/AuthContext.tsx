@@ -56,7 +56,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     const queryUser = await getUserByEmail(email);
     if (queryUser) {
       toast.error("User already exists");
-      throw new Error("User already exists");
+      throw new Error("User already exists 01");
     }
 
     const newUser: UserType = {

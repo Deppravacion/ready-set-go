@@ -17,7 +17,7 @@ const blankItem: ItemsType = {
   storeId: "",
   isFavorite: false,
 };
-//inprogress
+
 export const CreateItem = () => {
   const navigate = useNavigate();
   const { handleCreateItem, userTheme } = useAppProvider();

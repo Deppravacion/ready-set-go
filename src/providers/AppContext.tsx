@@ -39,7 +39,6 @@ export const AppProvider = ({ children }: { children: JSX.Element }) => {
       toast.error("Item already exists");
     try {
       const newItem = {
-        id: item.id,
         name: item.name,
         image: item.image,
         description: item.description,

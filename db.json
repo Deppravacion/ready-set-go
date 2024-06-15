@@ -1,67 +1,51 @@
 {
   "users": [
     {
-      "id": "01",
+      "id": "01aa",
       "name": "Robert Paulson",
       "email": "bobby.paulson@readysetgo.com",
       "password": "pass"
     },
     {
-      "id": "02",
+      "id": "02bb",
       "name": "Tester",
       "email": "test@test.com",
       "password": "pass"
-    },
-    {
-      "id": "8f4f",
-      "email": "8as@9898.com",
-      "name": "another",
-      "password": "ll"
     }
   ],
   "stores": [
     {
       "id": "01",
       "name": "garageFridge",
-      "userId": "01"
+      "userId": "01aa"
     },
     {
-      "id": "02",
+      "id": "022c",
       "name": "lx470",
-      "userId": "01"
-    },
-    {
-      "id": "0.9348163071272975",
-      "name": "test storage 1",
-      "userId": "01"
-    },
-    {
-      "id": "0.8288152075186084",
-      "name": "sdfasdfasdfdsf",
-      "userId": "02"
+      "userId": "01aa"
     }
   ],
   "items": [
     {
-      "id": "01",
+      "id": "01a1",
       "name": "shovel",
       "image": "https://plus.unsplash.com/premium_photo-1680658496041-f7575066cec2?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "description": "short shovel",
       "quantity": "1",
       "minQuantity": "1",
-      "storeId": "02"
+      "storeId": "022c"
     },
     {
-      "id": "02",
+      "id": "02b1",
       "name": "recoveryGear",
       "image": "https://media.istockphoto.com/id/2101625741/photo/fastenings-for-transporting-goods-straps-steel-shackles-and-ratchet-locks.webp?b=1&s=170667a&w=0&k=20&c=w2DTHxBsWkUjQWtUivHmuNzDgtmPAqQBIhuY5vZFdm0=",
       "description": "straps, shackles, etc",
       "quantity": "1",
       "minQuantity": "1",
-      "storeId": "02"
+      "storeId": "022c"
     },
     {
-      "id": "03",
+      "id": "03c1",
       "name": "babyMilk    ",
       "image": "babyMilk.jpg",
       "description": "frozen breast milk",
@@ -70,66 +54,28 @@
       "storeId": "01"
     },
     {
-      "id": "0.30420201276844283",
-      "name": "first item",
-      "image": "https://picsum.photos/id/237/200/300",
-      "description": "asdfasdfas",
-      "quantity": "44",
-      "minQuantity": "1",
-      "storeId": "0.9348163071272975"
-    },
-    {
-      "id": "0.30420201276844283",
-      "name": "second item",
-      "image": "https://picsum.photos/seed/picsum/200/300",
-      "description": "some image",
-      "quantity": "77",
-      "minQuantity": "34",
-      "storeId": "0.9348163071272975"
-    },
-    {
-      "id": "0.4206735401258188",
-      "name": "test item",
-      "image": "https://picsum.photos/seed/picsum/200/300",
-      "description": "mountain",
-      "quantity": 3,
-      "minQuantity": "1",
-      "storeId": "0.8288152075186084",
-      "isFavorite": false
-    },
-    {
-      "id": "0.4206735401258188",
-      "name": "test item 2",
-      "image": "https://picsum.photos/200/300?grayscale",
-      "description": "animal",
-      "quantity": "3",
-      "minQuantity": "1",
-      "storeId": "0.8288152075186084",
-      "isFavorite": false
-    },
-    {
-      "id": "9a17",
-      "name": "new id item",
+      "id": "499d",
+      "name": " qwuck item",
       "image": "https://picsum.photos/200/300/?blur",
-      "description": "lkjasdfolkjaslfdk",
-      "quantity": "77",
-      "minQuantity": "7",
-      "storeId": "0.8288152075186084",
+      "description": "lorem iisiis",
+      "quantity": "99",
+      "minQuantity": "9",
+      "storeId": "022c",
       "isFavorite": false
     }
   ],
   "favorites": [
     {
-      "itemId": "01",
+      "itemId": "01a1",
       "id": "28ab"
     },
     {
-      "id": "9a42",
-      "itemId": "0.4206735401258188"
+      "id": "bb64",
+      "itemId": "499d"
     },
     {
-      "id": "6d26",
-      "itemId": "9a17"
+      "id": "ec2b",
+      "itemId": "02b1"
     }
   ]
 }

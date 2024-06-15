@@ -96,7 +96,7 @@ export const SignUp = () => {
               </button>
             </div>
             <button
-              className='btn my-2'
+              className='btn my-2 bg-accent'
               onClick={() =>
                 (
                   document.getElementById("my_modal_1") as HTMLDialogElement
@@ -108,13 +108,13 @@ export const SignUp = () => {
             <dialog id='my_modal_1' className='modal'>
               <div className='modal-box'>
                 <h3 className='font-bold text-lg'>Hello!</h3>
-                <p className='py-4'>
+                <p className='py-4 '>
                   <HowItWorks />
                 </p>
                 <div className='modal-action'>
                   <form method='dialog'>
                     {/* if there is a button in form, it will close the modal */}
-                    <button className='btn'>Close</button>
+                    <button className='btn bg-info'>Close</button>
                   </form>
                 </div>
               </div>

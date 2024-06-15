@@ -23,9 +23,8 @@ type CardProps = {
 
 const CollapseItem: React.FC<CardProps> = ({ item, fetchItems, favorites }) => {
   const { id, name, image, description, quantity, minQuantity } = item;
-  const isFavorite = favorites
-    ? favorites.some((fav) => fav.itemId === id)
-    : false;
+  const isFavorite = favorites && favorites.some((fav) => fav.itemId === id);
+
   return (
     <>
       <div
@@ -74,22 +73,24 @@ const ItemsInterface: React.FC<CardProps> = ({ item, fetchItems }) => {
         <>
           <div className='flex  gap-1 flex-col justify-center text-2xl mb-1 p-4'>
             <button
-              className='btn btn-info flex btn-sm min-w-16 text-2xl items-center'
+              className='btn btn-info flex btn-sm min-w-16 text-2xl items-center leading-none'
               onMouseDown={() => increaseItemQuantity(item!.id!)}
             >
               +
             </button>
             <button
-              className='btn  btn-warning btn-sm min-w-16 text-2xl items-center'
+              className='btn  btn-warning btn-sm min-w-16 text-2xl items-center leading-none'
               onMouseDown={() => decreaseItemQuantity(item!.id!)}
-            ></button>
+            >
+              -
+            </button>
           </div>
           <div className='flex justify-around'>
             <button
               className='btn btn-error btn-sm min-w-16'
               onMouseDown={() => deleteItem()}
             >
-              Delete{" "}
+              Delete
             </button>
             <button
               className='btn btn-success btn-sm min-w-16'

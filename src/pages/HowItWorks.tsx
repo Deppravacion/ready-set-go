@@ -46,7 +46,7 @@ export const HowItWorks: React.FC = () => {
         <div className='container mx-auto p-10 bg-accent rounded-md'>
           <h2 className='text-lg'>{title}</h2>
         </div>
-        <div className='card-body'>
+        <div className='card-body text-success-content'>
           {cardBodyData.map((card, index) => {
             return (
               <Card

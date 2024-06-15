@@ -86,12 +86,50 @@
       "quantity": "77",
       "minQuantity": "34",
       "storeId": "0.9348163071272975"
+    },
+    {
+      "id": "0.4206735401258188",
+      "name": "test item",
+      "image": "https://picsum.photos/seed/picsum/200/300",
+      "description": "mountain",
+      "quantity": 3,
+      "minQuantity": "1",
+      "storeId": "0.8288152075186084",
+      "isFavorite": false
+    },
+    {
+      "id": "0.4206735401258188",
+      "name": "test item 2",
+      "image": "https://picsum.photos/200/300?grayscale",
+      "description": "animal",
+      "quantity": "3",
+      "minQuantity": "1",
+      "storeId": "0.8288152075186084",
+      "isFavorite": false
+    },
+    {
+      "id": "9a17",
+      "name": "new id item",
+      "image": "https://picsum.photos/200/300/?blur",
+      "description": "lkjasdfolkjaslfdk",
+      "quantity": "77",
+      "minQuantity": "7",
+      "storeId": "0.8288152075186084",
+      "isFavorite": false
     }
   ],
   "favorites": [
     {
       "itemId": "01",
       "id": "28ab"
+    },
+    {
+      "id": "9a42",
+      "itemId": "0.4206735401258188"
+    },
+    {
+      "id": "6d26",
+      "itemId": "9a17"
     }
   ]
 }

@@ -42,11 +42,12 @@ export const deleteFavoriteById = async (id: string) => {
 
 export const toggleFavorite = async (itemId: string) => {
   const favorites = await getFavoritesByItemId(itemId);
+  console.log(itemId, favorites);
   try {
     if (favorites.length === 0) {
+      console.log("no favorites");
       const newFavorite = {
         itemId,
-        // id: Math.random().toString(),
       };
       return await createFavorite(newFavorite);
     } else {

@@ -23,6 +23,11 @@
       "id": "022c",
       "name": "lx470",
       "userId": "01aa"
+    },
+    {
+      "id": "81b8",
+      "name": "new store",
+      "userId": "02bb"
     }
   ],
   "items": [
@@ -52,6 +57,15 @@
       "quantity": "99",
       "minQuantity": "18",
       "storeId": "01"
+    },
+    {
+      "id": "93ea",
+      "name": "fist item",
+      "image": "nba",
+      "description": "lorem 1",
+      "quantity": "11",
+      "minQuantity": "9",
+      "storeId": "81b8"
     }
   ],
   "favorites": [
@@ -62,6 +76,10 @@
     {
       "itemId": "02b1",
       "id": "a0b5"
+    },
+    {
+      "id": "c8ca",
+      "itemId": "93ea"
     }
   ]
 }

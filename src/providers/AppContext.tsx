@@ -17,7 +17,6 @@ export const AppProvider = ({ children }: { children: JSX.Element }) => {
 
   const handleAddStore = async (name: string, userId: string) => {
     const newStore = {
-      id: Math.random().toString(),
       name,
       userId,
     };
@@ -45,7 +44,6 @@ export const AppProvider = ({ children }: { children: JSX.Element }) => {
         quantity: item.quantity,
         minQuantity: item.minQuantity,
         storeId: storeId,
-        isFavorite: false,
       };
       return await createItem(newItem);
     } catch (error) {

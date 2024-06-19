@@ -11,6 +11,12 @@
       "name": "Tester",
       "email": "test@test.com",
       "password": "pass"
+    },
+    {
+      "id": "0541",
+      "email": "test@newstuff.com",
+      "name": "bugfix",
+      "password": "jj"
     }
   ],
   "stores": [

@@ -13,7 +13,7 @@ export const getUserByEmail = async (email: string) => {
   const user = await fetch(`http://localhost:3004/users${tail}`).then(
     (response) => response.json()
   );
-  return user;
+  return user[0];
 };
 
 export const createUser = async (user: UserType) => {

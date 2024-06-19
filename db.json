@@ -11,48 +11,6 @@
       "name": "Tester",
       "email": "test@test.com",
       "password": "pass"
-    },
-    {
-      "id": "1c35",
-      "email": "kj@asdfsadf88.com",
-      "name": "kj",
-      "password": "kj"
-    },
-    {
-      "id": "ea52",
-      "email": "test@test.com",
-      "name": "kjk",
-      "password": "j"
-    },
-    {
-      "id": "72bf",
-      "email": "test@test.com",
-      "name": "kj",
-      "password": "j"
-    },
-    {
-      "id": "da3b",
-      "email": "test@test.com",
-      "name": "asdf",
-      "password": "j"
-    },
-    {
-      "id": "c147",
-      "email": "test@test.com",
-      "name": "j",
-      "password": "j"
-    },
-    {
-      "id": "aed8",
-      "email": "test@test.com",
-      "name": "j",
-      "password": "j"
-    },
-    {
-      "id": "d186",
-      "email": "test@test.com",
-      "name": "k",
-      "password": "k"
     }
   ],
   "stores": [
@@ -94,16 +52,6 @@
       "quantity": "99",
       "minQuantity": "18",
       "storeId": "01"
-    },
-    {
-      "id": "499d",
-      "name": " qwuck item",
-      "image": "https://picsum.photos/200/300/?blur",
-      "description": "lorem iisiis",
-      "quantity": "99",
-      "minQuantity": "9",
-      "storeId": "022c",
-      "isFavorite": false
     }
   ],
   "favorites": [
@@ -112,12 +60,8 @@
       "id": "28ab"
     },
     {
-      "id": "bb64",
-      "itemId": "499d"
-    },
-    {
-      "id": "ec2b",
-      "itemId": "02b1"
+      "itemId": "02b1",
+      "id": "a0b5"
     }
   ]
 }

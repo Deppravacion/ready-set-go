@@ -10,22 +10,21 @@ export const CreateStore = () => {
   const { user, handleLogout } = useAuthProvider();
   const navigate = useNavigate();
   const { handleAddStore, userTheme } = useAppProvider();
-
   const [name, setName] = useState<string>("");
+  const userId = user?.id || "";
 
   const handleSubmit = async (
     e: FormEvent<HTMLFormElement>,
     { name, userId }: { name: string; userId: string }
   ) => {
     e.preventDefault();
+    console.log("name", name, "ID", userId);
     await handleAddStore(name, userId).then(() => {
       setName(name);
       console.log("submitted");
     });
     navigate("/home");
   };
-
-  const userId = user?.id || "";
 
   return (
     <>

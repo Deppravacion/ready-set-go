@@ -26,7 +26,7 @@ export const createUser = async (user: UserType) => {
   });
   if (!response.ok) {
     toast.error("Error creating user");
-    return false;
+    throw new Error("Error creating user");
   }
-  return true;
+  return response.json();
 };

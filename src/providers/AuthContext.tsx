@@ -70,12 +70,9 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     };
 
     try {
-      await createUser(newUser);
-      setUser({
-        email: newUser.email,
-        name: newUser.name,
-      });
-      sessionStorage.setItem("user", JSON.stringify(newUser));
+      const createdUser = await createUser(newUser);
+      setUser(createdUser);
+      sessionStorage.setItem("user", JSON.stringify(createdUser));
       sessionStorage.setItem("authtoken", "true");
       toast.success("User created successfully");
     } catch (error: unknown) {

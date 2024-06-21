@@ -13,10 +13,16 @@
       "password": "pass"
     },
     {
-      "id": "0541",
-      "email": "test@newstuff.com",
-      "name": "bugfix",
-      "password": "jj"
+      "id": "301c",
+      "email": "bug@fixed.com",
+      "name": "bugger",
+      "password": "pass"
+    },
+    {
+      "id": "a812",
+      "email": "its@good.com",
+      "name": "check",
+      "password": "pass"
     }
   ],
   "stores": [
@@ -31,9 +37,19 @@
       "userId": "01aa"
     },
     {
-      "id": "81b8",
-      "name": "new store",
+      "id": "5218",
+      "name": "store 1",
+      "userId": "301c"
+    },
+    {
+      "id": "f099",
+      "name": "Test's store ",
       "userId": "02bb"
+    },
+    {
+      "id": "fc7b",
+      "name": "its good store",
+      "userId": "a812"
     }
   ],
   "items": [
@@ -65,13 +81,22 @@
       "storeId": "01"
     },
     {
-      "id": "93ea",
-      "name": "fist item",
-      "image": "nba",
-      "description": "lorem 1",
-      "quantity": "11",
-      "minQuantity": "9",
-      "storeId": "81b8"
+      "id": "1751",
+      "name": "item 1 ",
+      "image": "NA",
+      "description": "test lorem",
+      "quantity": 10,
+      "minQuantity": "1",
+      "storeId": "5218"
+    },
+    {
+      "id": "d003",
+      "name": "Test first item ",
+      "image": "na",
+      "description": "lorem ipppp",
+      "quantity": "19",
+      "minQuantity": "1",
+      "storeId": "f099"
     }
   ],
   "favorites": [
@@ -84,8 +109,8 @@
       "id": "a0b5"
     },
     {
-      "id": "c8ca",
-      "itemId": "93ea"
+      "id": "8654",
+      "itemId": "1751"
     }
   ]
 }
